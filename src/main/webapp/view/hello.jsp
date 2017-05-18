@@ -11,6 +11,6 @@
     <title>hello page</title>
 </head>
 <body>
-hello admin.welcomw!
+hello admin.welcome!
 </body>
 </html>
