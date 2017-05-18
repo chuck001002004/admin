@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ea27b6fd-220f-45dc-b60e-0f8c03f7000a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/view/hello.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/view/hello.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/admin/view/hello.jsp" afterPath="$PROJECT_DIR$/target/admin/view/hello.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tygadmin.iws" />
@@ -71,8 +70,8 @@
       <file leaf-file-name="hello.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/view/hello.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.86153847">
-              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.6769231">
+              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -833,7 +832,7 @@
       <created>1495090702387</created>
       <option name="number" value="Default" />
       <updated>1495090702387</updated>
-      <workItem from="1495090705597" duration="2399000" />
+      <workItem from="1495090705597" duration="2482000" />
     </task>
     <task id="LOCAL-00001" summary="modify hello.jsp">
       <created>1495092416969</created>
@@ -841,11 +840,17 @@
       <option name="project" value="LOCAL" />
       <updated>1495092416969</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add something in hello.jsp">
+      <created>1495093195740</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1495093195740</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2399000" />
+    <option name="totallyTimeSpent" value="2482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -885,7 +890,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="modify hello.jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify hello.jsp" />
+    <MESSAGE value="add something in hello.jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="add something in hello.jsp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1010,8 +1016,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/view/hello.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86153847">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.6769231">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
           <folding />
         </state>
       </provider>
