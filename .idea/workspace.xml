@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea27b6fd-220f-45dc-b60e-0f8c03f7000a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/admin/view/hello.jsp" afterPath="$PROJECT_DIR$/target/admin/view/hello.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/view/hello.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/view/hello.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tygadmin.iws" />
@@ -70,8 +70,8 @@
       <file leaf-file-name="hello.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/view/hello.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24615385">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.8">
+              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -838,7 +838,7 @@
       <created>1495090702387</created>
       <option name="number" value="Default" />
       <updated>1495090702387</updated>
-      <workItem from="1495090705597" duration="3081000" />
+      <workItem from="1495090705597" duration="3228000" />
     </task>
     <task id="LOCAL-00001" summary="modify hello.jsp">
       <created>1495092416969</created>
@@ -858,11 +858,17 @@
       <option name="project" value="LOCAL" />
       <updated>1495093250934</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add something in hello.jsp">
+      <created>1495093850632</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1495093850632</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3081000" />
+    <option name="totallyTimeSpent" value="3228000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1037,8 +1043,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/view/hello.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24615385">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.8">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
