@@ -12,5 +12,7 @@
 </head>
 <body>
 hello admin.welcomw!
+i'm a handsome admin
+hello admin.welcome!
 </body>
 </html>
