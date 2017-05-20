@@ -81,11 +81,5 @@
 <script type="text/javascript" src="<%=basePath%>common/lib/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>common/js/sccl.js"></script>
 <script type="text/javascript" src="<%=basePath%>common/js/sccl-util.js"></script>
-<script type="text/javascript">
-  $('.item4').on('click',function(){
-    alert("123");
-    $(this).attr('href','finished.html');
-  });
-</script>
 </body>
 </html>
