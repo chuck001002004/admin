@@ -282,7 +282,7 @@ function initMenu(menu,parent){
 			}else{
 				item.icon == "" ? item.icon = "&#xe610" : item.icon = item.icon;
 				if(item.childMenus == ""){
-					str = "<li><a href='"+item.url+"'><i class='icon-font'>"+item.icon+"</i><span>"+item.name+"</span></a></li>";
+					str = "<li><a href='page/"+item.url+"'><i class='icon-font'>"+item.icon+"</i><span>"+item.name+"</span></a></li>";
 					$(parent).append(str);
 				}else{
 					str = "<li><a href='"+item.url+"'><i class='icon-font '>"+item.icon+"</i><span>"+item.name+"</span><i class='icon-font icon-right'>&#xe60b;</i></a>";

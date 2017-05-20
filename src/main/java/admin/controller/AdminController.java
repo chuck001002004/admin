@@ -39,7 +39,7 @@ public class AdminController {
                              HttpServletRequest request, HttpServletResponse response, Map<String, Object> map){
         Admin admin = adminService.adminLogin(userName, password);
         if(admin == null){
-            map.put("message", "用户名或密码错误");
+            map.put("error", 1);
             return "login";
         }
         //设置Cookie

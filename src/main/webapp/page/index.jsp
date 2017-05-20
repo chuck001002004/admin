@@ -7,10 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%
   String path = request.getContextPath();
   String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<base href="<%=basePath%>">
 <html>
 <head>
   <meta charset="utf-8">
@@ -35,7 +37,7 @@
     <ul class="header-bar">
       <li class="header-bar-role"><a href="javascript:;">管理员</a></li>
       <li class="header-bar-nav">
-        <a href="javascript:;">admin<i class="icon-font" style="margin-left:5px;">&#xe60c;</i></a>
+        <a href="javascript:;">${admin.name}<i class="icon-font" style="margin-left:5px;">&#xe60c;</i></a>
         <ul class="header-dropdown-menu">
           <li><a href="javascript:;">个人信息</a></li>
           <li><a href="javascript:;">切换账户</a></li>
@@ -66,20 +68,24 @@
       <button class="tab-btn btn-left"><i class="icon-font">&#xe60e;</i></button>
       <nav class="tab-nav">
         <div class="tab-nav-content">
-          <a href="javascript:;" class="content-tab active" data-id="<%=basePath%>home.html">首页</a>
+          <a href="javascript:;" class="content-tab active" data-id="home.html">首页</a>
         </div>
       </nav>
       <button class="tab-btn btn-right"><i class="icon-font">&#xe60f;</i></button>
     </div>
     <div class="layout-main-body">
-      <iframe class="body-iframe" name="iframe0" width="100%" height="99%" src="<%=basePath%>home.html" frameborder="0" data-id="<%=basePath%>home.html" seamless></iframe>
+      <iframe class="body-iframe" name="iframe0" width="100%" height="99%" src="page/home.jsp" frameborder="0" data-id="<%=basePath%>home.html" seamless></iframe>
     </div>
   </section>
-  <div class="layout-footer">@2016 0.1 www.mycodes.net</div>
 </div>
 <script type="text/javascript" src="<%=basePath%>common/lib/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>common/js/sccl.js"></script>
 <script type="text/javascript" src="<%=basePath%>common/js/sccl-util.js"></script>
-
+<script type="text/javascript">
+  $('.item4').on('click',function(){
+    alert("123");
+    $(this).attr('href','finished.html');
+  });
+</script>
 </body>
 </html>
