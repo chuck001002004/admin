@@ -8,7 +8,7 @@
     </settings>
 
     <mappers>
-
+        <mapper resource="mapper/AdminMapper.xml"/>
     </mappers>
 
 </configuration>

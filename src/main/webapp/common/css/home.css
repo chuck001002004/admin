@@ -1,0 +1,63 @@
+#content{
+	margin: 30px auto;
+	width: 95%;
+    background: rgb(251,247,244);
+}
+#content a:hover{
+	color: red;
+	text-decoration: none;
+}
+#search form{
+	overflow: hidden;
+}
+#search .info-list{
+	margin-top: 16px;
+	margin-bottom: 16px;
+	height: 30px;
+	float: left;
+	width: 45%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+}
+#search .sub{
+	clear: both;
+}
+#search .info-list input{
+	width: 50%;
+}
+
+#search .info-list input[type="radio"]{
+	width: 5%;
+}
+#search .info-textarea{
+	width: 100%;
+}
+#search .info-textarea span{
+	margin-left: 2.5%;
+}
+#search .info-textarea textarea{
+	width: 95%;
+	margin-left: 2.5%;
+}
+#search .sub{
+	text-align: center;
+}
+#search .sub input{
+	width: 10%;
+	height: 25px;
+	line-height: 25px;
+}
+#sch-result .am-table{
+	width: 100%;
+	border: 1px solid #ddd;
+}
+#sch-result .am-table tr{
+	height: 40px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+#sch-result .am-table th{
+	height: 30px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}

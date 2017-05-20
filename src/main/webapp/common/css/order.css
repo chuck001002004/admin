@@ -1,0 +1,50 @@
+#content{
+	margin: 30px auto;
+	width: 95%;
+    background: rgb(251,247,244);
+}
+#content a:hover{
+	color: red;
+}
+#content .am-table{
+	width: 100%;
+	border: 1px solid #ddd;
+}
+#content .am-table tr{
+	height: 40px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+#content .am-table th{
+	height: 30px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+#content .row{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	overflow: hidden;
+}
+.row-left{
+	width: 45%;
+	float: left;
+	margin-left: 5%;
+}
+.row-right{
+	width: 45%;
+	float: left;
+	/*margin-left: 45%;*/
+}
+.row-right ul{
+	overflow: hidden;
+	margin-left: 80%;
+}
+.row-right li{
+	margin-left: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 25px
+	height: 25px;
+	float: left;
+	border: 1px solid #ddd;
+}

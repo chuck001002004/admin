@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="tyg" uuid="6c4a892a-2202-477c-80b4-28f8ec26f490">
+    <database-info product="MySQL" version="5.5.47" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="tyg"/>
+    <table name="tb_admin" schema="" catalog="tyg" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="566h55CG5ZGYaWTvvIjkuLvplK7vvIk=" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" remarks="55So5oi35ZCN"/>
+      <column name="password" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" remarks="5a+G56CB"/>
+      <column name="realname" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" remarks="566h55CG5ZGY5aeT5ZCN"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tb_admin_login_log" schema="" catalog="tyg" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5pel5b+X6K6w5b2VaWTvvIjkuLvplK7vvIk=" autoIncrement="true"/>
+      <column name="adminid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="566h55CG5ZGYaWQ="/>
+      <column name="login_time" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91" remarks="55m76ZmG5pe26Ze0"/>
+      <column name="login_ip" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" remarks="55m75b2VaXA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="fk" unique="false" columns="adminid"/>
+    </table>
+    <table name="tb_badminton" schema="" catalog="tyg" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="57695q+b55CD6K6i5Y2V5Y+3" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" remarks="6aKE57qm5pe26Ze0"/>
+      <column name="userid" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="55So5oi3aWQo5b6u5L+h5Y+3KQ=="/>
+      <column name="site_no" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5Zy65Zyw5Y+3"/>
+      <column name="start_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="5byA5aeL5pe26Ze0"/>
+      <column name="end_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="57uT5p2f5pe26Ze0"/>
+      <column name="order_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" remarks="6K6i5Y2V5pel5pyf"/>
+      <column name="ispay" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5piv5ZCm5pSv5LuY"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="fk_badminton_user" unique="false" columns="userid"/>
+    </table>
+    <table name="tb_badminton_long" schema="" catalog="tyg" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5bi46am755So5oi3aWQ=" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq65aeT5ZCNL+iBlOezu+WNleS9jQ=="/>
+      <column name="phone" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq655S16K+d"/>
+      <column name="week" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="start_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="5byA5aeL5pe26Ze0"/>
+      <column name="end_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="57uT5p2f5pe26Ze0"/>
+      <column name="site_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5Zy65Zyw5Y+3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tb_basketball" schema="" catalog="tyg" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="6K6i5Y2V5Y+3" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" remarks="6aKE57qm5pe26Ze0"/>
+      <column name="userid" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="6aKE57qmaWQ="/>
+      <column name="site_no" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" def="JzAn" remarks="5Zy65Zyw5Y+3"/>
+      <column name="site_type" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5Zy65Zyw57G75Z6L77yI5YWo5Zy6L+WNiuWcuu+8iQ=="/>
+      <column name="start_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="6LW35aeL5pe26Ze0"/>
+      <column name="end_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="57uT5p2f5pe26Ze0"/>
+      <column name="order_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" remarks="6K6i5Y2V5pe26Ze0"/>
+      <column name="ispay" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5piv5ZCm5pSv5LuY"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="fk_basket_user" unique="false" columns="userid"/>
+    </table>
+    <table name="tb_basketball_long" schema="" catalog="tyg" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5bi45L2P55So5oi3aWQ=" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="5aeT5ZCNL+WNleS9jeWQjQ=="/>
+      <column name="phone" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq655S16K+d"/>
+      <column name="week" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="start_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="5byA5aeL5pe26Ze0"/>
+      <column name="end_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="57uT5p2f5pe26Ze0"/>
+      <column name="site_no" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5Zy65Zyw5Y+3"/>
+      <column name="site_type" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5Zy65Zyw57G75Z6L"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tb_pingpang" schema="" catalog="tyg" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="userid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="start_time" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="end_time" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="order_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="ispay" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="fk_pp" unique="false" columns="userid"/>
+    </table>
+    <table name="tb_user" schema="" catalog="tyg" type="TABLE">
+      <column name="id" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" remarks="5b6u5L+h5Y+3"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aeT5ZCN"/>
+      <column name="gender" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12" remarks="5oCn5Yir"/>
+      <column name="phone" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12" remarks="5omL5py65Y+356CB"/>
+      <column name="ID_NO" sqlType="VARCHAR" precision="18" scale="0" nullable="true" jdbcType="12" remarks="6Lqr5Lu96K+B5Y+356CB"/>
+      <column name="mergency_phone" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12" remarks="57Sn5oCl6IGU57O75Lq655S16K+d5Y+356CB"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+  </data-source>
+</component>
