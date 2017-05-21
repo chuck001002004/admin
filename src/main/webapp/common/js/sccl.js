@@ -279,10 +279,10 @@ function initMenu(menu,parent){
 				if(item.childMenus != ""){
 					initMenu(item.childMenus,parent);
 				}
-			}else{
+			}else{//alert(item.name + "  " + item.url);
 				item.icon == "" ? item.icon = "&#xe610" : item.icon = item.icon;
 				if(item.childMenus == ""){
-					str = "<li><a href='page/"+item.url+"'><i class='icon-font'>"+item.icon+"</i><span>"+item.name+"</span></a></li>";
+					str = "<li><a href='"+item.url+"' target='iframe0'><i class='icon-font'>"+item.icon+"</i><span>"+item.name+"</span></a></li>";
 					$(parent).append(str);
 				}else{
 					str = "<li><a href='"+item.url+"'><i class='icon-font '>"+item.icon+"</i><span>"+item.name+"</span><i class='icon-font icon-right'>&#xe60b;</i></a>";
@@ -396,14 +396,14 @@ $(function(){
 	/*菜单json*/
 	var menu = [{"id":"1","name":"主菜单","parentId":"0","url":"","icon":"","order":"1","isHeader":"1","childMenus":[
 					{"id":"3","name":"订单管理","parentId":"1","url":"","icon":"&#xe604;","order":"1","isHeader":"0","childMenus":[
-						{"id":"4","name":"已完成","parentId":"3","url":"finished.html","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"5","name":"未完成","parentId":"3","url":"nofinished.html","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"6","name":"未支付","parentId":"3","url":"nopay.html","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"6","name":"添加订单","parentId":"3","url":"additem.html","icon":"","order":"1","isHeader":"0","childMenus":""}
+						{"id":"4","name":"已完成","parentId":"3","url":"order/getAllCompleteOrder?stadium=0&start_time=0&end_time=0&start=1","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"5","name":"未完成","parentId":"3","url":"page/nofinished.html","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"6","name":"未支付","parentId":"3","url":"page/nopay.html","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"6","name":"添加订单","parentId":"3","url":"page/additem.html","icon":"","order":"1","isHeader":"0","childMenus":""}
 					]},
 					{"id":"6","name":"常驻用户管理","parentId":"1","url":"","icon":"&#xe602;","order":"1","isHeader":"0","childMenus":[
-						{"id":"7","name":"查看","parentId":"6","url":"checkuser.html","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"8","name":"添加","parentId":"6","url":"adduser.html","icon":"","order":"1","isHeader":"0","childMenus":""}
+						{"id":"7","name":"查看","parentId":"6","url":"page/checkuser.html","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"8","name":"添加","parentId":"6","url":"page/adduser.html","icon":"","order":"1","isHeader":"0","childMenus":""}
 					]}
 				]},
 				{"id":"2","name":"框架案例","parentId":"0","url":"","icon":"","order":"2","isHeader":"1","childMenus":[

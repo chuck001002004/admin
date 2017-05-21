@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin.dao.BasketballDao">
+
+    <select id="getAllCompleteOrder" resultType="admin.vo.Order">
+        SELECT a.*, b.name
+        FROM
+        (
+          SELECT id, userid, "date", '篮球场' type, start_time, end_time, ispay, site_no
+          FROM tb_basketball
+          WHERE iscomplete = '1'
+          <if test="date != null">
+              AND "date" = #{date}
+          </if>
+          <if test="start_time != null">
+              AND start_time = #{start_time}
+          </if>
+          <if test="end_time != null">
+              AND end_time = #{end_time}
+          </if>
+        ) a,
+        (
+          SELECT id, name
+          FROM tb_user
+          <where>
+              <if test="name != null">
+                  name = #{name}
+              </if>
+              <if test="phone != null">
+                  phone = #{phone}
+              </if>
+          </where>
+        ) b
+        WHERE a.userid = b.id
+        ORDER BY a."date" DESC LIMIT #{start}, #{page_size}
+    </select>
+
+</mapper>

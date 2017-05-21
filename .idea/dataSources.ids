@@ -31,6 +31,7 @@
       <column name="end_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="57uT5p2f5pe26Ze0"/>
       <column name="order_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" remarks="6K6i5Y2V5pel5pyf"/>
       <column name="ispay" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5piv5ZCm5pSv5LuY"/>
+      <column name="iscomplete" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="fk_badminton_user" unique="false" columns="userid"/>
     </table>
@@ -54,6 +55,7 @@
       <column name="end_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="57uT5p2f5pe26Ze0"/>
       <column name="order_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91" remarks="6K6i5Y2V5pe26Ze0"/>
       <column name="ispay" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5piv5ZCm5pSv5LuY"/>
+      <column name="iscomplete" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="fk_basket_user" unique="false" columns="userid"/>
     </table>
@@ -75,7 +77,8 @@
       <column name="start_time" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <column name="end_time" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <column name="order_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="ispay" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ispay" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <column name="iscomplete" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="fk_pp" unique="false" columns="userid"/>
     </table>

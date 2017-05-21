@@ -7,18 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by Boqi-Hu on 2017/5/20.
+ * Created by Boqi-Hu on 2017/5/21.
  */
 @Repository
-public interface OrderDao {
-
-    /**
-     * 获取所有订单记录
-     * @param start 开始记录数
-     * @param page_size 记录条数
-     * @return 所有的订单
-     */
-    List<Order> getAllOrder(@Param(value = "start") int start, @Param(value = "page_size") int page_size);
+public interface BadmintonDao {
 
     /**
      * 获取所有已完成订单记录

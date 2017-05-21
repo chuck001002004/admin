@@ -1,6 +1,6 @@
 package admin.service;
 
-import admin.dao.OrderDao;
+import admin.dao.PingpangDao;
 import admin.vo.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,23 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by Boqi-Hu on 2017/5/20.
+ * Created by Boqi-Hu on 2017/5/21.
  */
 @Service
-public class OrderService {
+public class PingpangService {
 
     @Autowired
-    OrderDao orderDao;
-
-    /**
-     * 获取所有订单记录
-     * @param start 开始条数
-     * @param page_size 总条数
-     * @return 所有的订单
-     */
-    public List<Order> getAllOrder(int start, int page_size){
-        return orderDao.getAllOrder(start, page_size);
-    }
+    PingpangDao pingpangDao;
 
     /**
      * 获取所有已完成订单记录
@@ -39,7 +29,7 @@ public class OrderService {
      */
     public List<Order> getAllCompleteOrder(String userName, String phone, String date, double start_time,
                                            double end_time, int start, int page_size){
-        return orderDao.getAllCompleteOrder(userName, phone, date, start_time, end_time, start, page_size);
+        return pingpangDao.getAllCompleteOrder(userName, phone, date, start_time, end_time, start, page_size);
     }
 
 }
