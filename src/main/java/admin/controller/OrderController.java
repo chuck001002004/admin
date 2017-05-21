@@ -8,6 +8,7 @@ import admin.vo.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,9 @@ public class OrderController {
         map.put("list", list);
         int count = (int) Math.ceil(list.size() / PAGE_SIZE);
         map.put("page_count", count);
+        for(Order o : list){
+            System.out.println(o);
+        }
         return "home";
     }
 
@@ -121,9 +125,9 @@ public class OrderController {
         map.put("list", list);
         map.put("page_count", count);
         map.put("order_count", order_count);
-//        for(Order o : list){
-//            System.out.println(o);
-//        }
+        for(Order o : list){
+            System.out.println(o);
+        }
         return "nofinished";
     }
 
@@ -160,10 +164,37 @@ public class OrderController {
         map.put("list", list);
         map.put("page_count", count);
         map.put("order_count", order_count);
-//        for(Order o : list){
-//            System.out.println(o);
-//        }
+        for(Order o : list){
+            System.out.println(o);
+        }
         return "nopay";
+    }
+
+    /**
+     * 增加订单
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param item 场地类型
+     * @param stadium 场地号
+     * @return 转到未支付订单页等待确认
+     */
+    @RequestMapping(value = "/addOrder")
+    public String addOrder(String userName, String phone, String date, double start_time,
+                           double end_time, int item, @RequestParam(required = false) String stadium,
+                           @RequestParam(required = false) String site_no){
+        System.out.println(userName + "  " + phone + "  " + date + "  " + start_time + "  "
+                + end_time + "  " + item + "  " + stadium);
+        if(item == 0){
+            basketballService.addOrder(userName, phone, date, start_time, end_time, stadium.length() == 1 ? "0" : "1", stadium);
+        }else if(item == 1){
+            badmintonService.addOrder(userName, phone, date, start_time, end_time, site_no);
+        }else{
+            pingpangService.addOrder(userName, phone, date, start_time, end_time);
+        }
+        return "additem";
     }
 
 }

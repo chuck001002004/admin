@@ -64,4 +64,19 @@ public class PingpangService {
         return pingpangDao.getAllUnpayOrder(userName, phone, date, start_time, end_time, start, page_size);
     }
 
+    /**
+     * 添加订单
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     */
+    public void addOrder(String userName, String phone, String date, double start_time,
+                         double end_time){
+        System.out.println(userName + "  " + phone + "  " + date + "  " + start_time + "  "
+                + end_time);
+        pingpangDao.addOrder(userName, phone, date, start_time, end_time);
+    }
+
 }

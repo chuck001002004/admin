@@ -41,7 +41,8 @@
     <c:forEach items="${list}" var="order">
       <tr>
         <td>${order.id}</td>
-        <td>${order.name}</td>
+        <c:if test="${order.name == null}"><td>${order.alias}(该用户非微信用户)</td></c:if>
+        <c:if test="${order.name != null}"><td>${order.name}</td></c:if>
         <td>${order.site_no}号${order.type}</td>
         <td><fmt:formatDate value="${order.date}" pattern="yyyy-MM-dd"/></td>
         <td>${order.start_time}--${order.end_time}</td>

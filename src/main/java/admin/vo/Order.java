@@ -18,6 +18,15 @@ public class Order {
     String name;    //用户姓名
     String type;    //场地类型
     String iscomplete;  //是否已完成
+    String alias;   //给非微信用户的姓名字段
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
 
     public String getIscomplete() {
         return iscomplete;
@@ -125,6 +134,7 @@ public class Order {
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", iscomplete='" + iscomplete + '\'' +
+                ", alias='" + alias + '\'' +
                 '}';
     }
 }

@@ -8,11 +8,11 @@
         SELECT a.*, b.name
         FROM
         (
-            SELECT id, userid, "date", '乒乓球场' type, start_time, end_time, ispay, site_no
+            SELECT id, userid, date, '乒乓球场' type, start_time, end_time, ispay, site_no, alias
             FROM tb_pingpang
             WHERE iscomplete = '1'
             <if test="date != null">
-                AND "date" = #{date}
+                AND date = #{date}
             </if>
             <if test="start_time != null">
                 AND start_time = #{start_time}
@@ -20,7 +20,8 @@
             <if test="end_time != null">
                 AND end_time = #{end_time}
             </if>
-        ) a,
+        ) a
+        LEFT JOIN
         (
             SELECT id, name
             FROM tb_user
@@ -33,19 +34,19 @@
                 </if>
             </where>
         ) b
-        WHERE a.userid = b.id
-        ORDER BY a."date" DESC LIMIT #{start}, #{page_size}
+        ON a.userid = b.id
+        ORDER BY a.date DESC LIMIT #{start}, #{page_size}
     </select>
 
     <select id="getAllIncompleteOrder" resultType="admin.vo.Order">
         SELECT a.*, b.name
         FROM
         (
-        SELECT id, userid, "date", '乒乓球场' type, start_time, end_time, ispay, site_no
+        SELECT id, userid, date, '乒乓球场' type, start_time, end_time, ispay, site_no, alias
         FROM tb_pingpang
         WHERE ispay = '1' AND iscomplete = '0'
         <if test="date != null">
-            AND "date" = #{date}
+            AND date = #{date}
         </if>
         <if test="start_time != null">
             AND start_time = #{start_time}
@@ -53,7 +54,8 @@
         <if test="end_time != null">
             AND end_time = #{end_time}
         </if>
-        ) a,
+        ) a
+        LEFT JOIN
         (
         SELECT id, name
         FROM tb_user
@@ -66,19 +68,19 @@
             </if>
         </where>
         ) b
-        WHERE a.userid = b.id
-        ORDER BY a."date" DESC LIMIT #{start}, #{page_size}
+        ON a.userid = b.id
+        ORDER BY a.date DESC LIMIT #{start}, #{page_size}
     </select>
 
     <select id="getAllUnpayOrder" resultType="admin.vo.Order">
         SELECT a.*, b.name
         FROM
         (
-            SELECT id, userid, "date", '乒乓球场' type, start_time, end_time, ispay, site_no
+            SELECT id, userid, date, '乒乓球场' type, start_time, end_time, ispay, site_no, alias
             FROM tb_pingpang
             WHERE ispay = '0'
             <if test="date != null">
-                AND "date" = #{date}
+                AND date = #{date}
             </if>
             <if test="start_time != null">
                 AND start_time = #{start_time}
@@ -86,7 +88,8 @@
             <if test="end_time != null">
                 AND end_time = #{end_time}
             </if>
-        ) a,
+        ) a
+        LEFT JOIN
         (
             SELECT id, name
             FROM tb_user
@@ -99,8 +102,15 @@
                 </if>
             </where>
         ) b
-        WHERE a.userid = b.id
-        ORDER BY a."date" DESC LIMIT #{start}, #{page_size}
+        ON a.userid = b.id
+        ORDER BY a.date DESC LIMIT #{start}, #{page_size}
     </select>
+
+    <insert id="addOrder">
+        INSERT INTO tb_pingpang (userid, date, start_time, end_time, order_date, ispay, iscomplete, alias)
+        VALUES
+        ((SELECT id FROM tb_user WHERE name = #{name} AND phone = #{phone}),
+          #{date}, #{start_time}, #{end_time}, now(), '0', '0', #{name})
+    </insert>
 
 </mapper>

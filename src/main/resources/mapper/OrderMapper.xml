@@ -6,21 +6,22 @@
 
     <select id="getAllOrder" resultType="admin.vo.Order">
         SELECT a.*, b.name FROM
-		(SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete FROM tb_basketball
+		(SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete, alias FROM tb_basketball
 		 UNION
-		 SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete FROM tb_badminton
+		 SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete, alias FROM tb_badminton
 		 UNION
-		 SELECT id, userid, date, '乒乓球台' type, start_time, end_time, ispay, 0 site_no, iscomplete FROM tb_pingpang) a,
+		 SELECT id, userid, date, '乒乓球台' type, start_time, end_time, ispay, 0 site_no, iscomplete, alias FROM tb_pingpang) a
+		 LEFT JOIN
 		(SELECT id, name
 		FROM tb_user) b
-		WHERE a.userid = b.id
+		ON a.userid = b.id
 		ORDER BY a.date DESC LIMIT #{start}, #{page_size}
     </select>
 
     <select id="getAllCompleteOrder" resultType="admin.vo.Order">
         SELECT a.*, b.name
         FROM
-        (SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete
+        (SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete, alias
           FROM tb_basketball
           WHERE iscomplete = '1'
           <if test="date != null">
@@ -33,7 +34,7 @@
               AND end_time = #{end_time}
           </if>
 		 UNION
-		 SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete
+		 SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete, alias
          FROM tb_badminton
          WHERE iscomplete = '1'
          <if test="date != null">
@@ -46,7 +47,7 @@
              AND end_time = #{end_time}
          </if>
 		 UNION
-		 SELECT id, userid, date, '乒乓球台' type, start_time, end_time, ispay, 0 site_no, iscomplete
+		 SELECT id, userid, date, '乒乓球台' type, start_time, end_time, ispay, 0 site_no, iscomplete, alias
          FROM tb_pingpang
          WHERE iscomplete = '1'
          <if test="date != null">
@@ -58,7 +59,8 @@
          <if test="end_time != 0">
              AND end_time = #{end_time}
          </if>
-        ) a,
+        ) a
+        LEFT JOIN
 		(SELECT id, name
 		  FROM tb_user
           <where>
@@ -70,7 +72,7 @@
               </if>
           </where>
 		) b
-        WHERE a.userid = b.id
+        ON a.userid = b.id
         ORDER BY a.date DESC LIMIT #{start}, #{page_size}
     </select>
 
@@ -78,7 +80,7 @@
         SELECT a.*, b.name
         FROM
         (
-            SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete
+            SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete, alias
             FROM tb_basketball
             WHERE ispay = '1' AND iscomplete = '0'
             <if test="date != null">
@@ -91,7 +93,7 @@
                 AND end_time = #{end_time}
             </if>
             UNION
-            SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete
+            SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete, alias
             FROM tb_badminton
             WHERE ispay = '1' AND iscomplete = '0'
             <if test="date != null">
@@ -104,7 +106,7 @@
                 AND end_time = #{end_time}
             </if>
             UNION
-            SELECT id, userid, date, '乒乓球台' type, start_time, end_time, ispay, 0 site_no, iscomplete
+            SELECT id, userid, date, '乒乓球台' type, start_time, end_time, ispay, 0 site_no, iscomplete, alias
             FROM tb_pingpang
             WHERE ispay = '1' AND iscomplete = '0'
             <if test="date != null">
@@ -116,7 +118,8 @@
             <if test="end_time != 0">
                 AND end_time = #{end_time}
             </if>
-        ) a,
+        ) a
+        LEFT JOIN
         (
             SELECT id, name
             FROM tb_user
@@ -129,7 +132,7 @@
                 </if>
             </where>
         ) b
-        WHERE a.userid = b.id
+        ON a.userid = b.id
         ORDER BY a.date DESC LIMIT #{start}, #{page_size}
     </select>
 
@@ -137,7 +140,7 @@
         SELECT a.*, b.name
         FROM
         (
-        SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete
+        SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete, alias
         FROM tb_basketball
         WHERE ispay = '0'
         <if test="date != null">
@@ -150,7 +153,7 @@
             AND end_time = #{end_time}
         </if>
         UNION
-        SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete
+        SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete, alias
         FROM tb_badminton
         WHERE ispay = '0'
         <if test="date != null">
@@ -163,7 +166,7 @@
             AND end_time = #{end_time}
         </if>
         UNION
-        SELECT id, userid, date, '乒乓球台' type, start_time, end_time, ispay, 0 site_no, iscomplete
+        SELECT id, userid, date, '乒乓球台' type, start_time, end_time, ispay, 0 site_no, iscomplete, alias
         FROM tb_pingpang
         WHERE ispay = '0'
         <if test="date != null">
@@ -175,7 +178,8 @@
         <if test="end_time != 0">
             AND end_time = #{end_time}
         </if>
-        ) a,
+        ) a
+        LEFT JOIN
         (
         SELECT id, name
         FROM tb_user
@@ -188,7 +192,7 @@
             </if>
         </where>
         ) b
-        WHERE a.userid = b.id
+        ON a.userid = b.id
         ORDER BY a.date DESC LIMIT #{start}, #{page_size}
     </select>
 

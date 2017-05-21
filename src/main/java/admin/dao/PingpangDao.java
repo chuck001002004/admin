@@ -57,4 +57,16 @@ public interface PingpangDao {
                                  @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
                                  @Param(value = "start") int start, @Param(value = "page_size") int page_size);
 
+    /**
+     * 添加订单
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     */
+    void addOrder(@Param(value = "name") String userName, @Param(value = "phone") String phone,
+                  @Param(value = "date") String date, @Param(value = "start_time") double start_time,
+                  @Param(value = "end_time") double end_time);
+
 }
