@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>欢迎登陆</title>
+</head>
+<script src="../common/js/jquery-1.12.3.min.js"></script>
+<script>
+    window.onload = function()
+    {
+        $('.welcome').animate(
+                {
+                    'top':'30%',
+                    'opacity':'1'
+                },2200);
+    }
+</script>
+<body style="background:url(../common/image/login_bg.png) repeat;">
+<img class="welcome" style=" position:absolute; left:50%; top:67%; margin:-39px 0 0 -163px; width:327px; height:68px; opacity:0;" src="../common/image/welcome.png" />
+</body>
+</html>

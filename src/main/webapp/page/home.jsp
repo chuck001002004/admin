@@ -62,20 +62,22 @@
       </thead>
       <tbody>
       <c:forEach items="${list}" var="order">
+        <tr>
         <td>${order.id}</td>
         <td>${order.name}</td>
         <td>${order.site_no}号${order.type}</td>
         <td>${order.start_time}--${order.end_time}</td>
-        <c:if test="${order.iscomplete == '1'}">
+        <c:if test="${order.ispay == '1' && order.iscomplete == '1'}">
           <td>已完成</td>
         </c:if>
         <c:if test="${order.ispay == '0'}">
           <td>未支付</td>
         </c:if>
-        <c:if test="${order.ispay == '1'} && ${order.iscomplete == '0'}">
+        <c:if test="${order.ispay == '1' && order.iscomplete == '0'}">
           <td>未完成</td>
         </c:if>
-        <td></td>
+          <td><a class="edit" href="javascript:;">详情</a>&nbsp;<a class="delete" href="">删除</a></td>
+        </tr>
       </c:forEach>
       <!-- <tr>
         <td>1</td>

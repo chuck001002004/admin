@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: Boqi-Hu
   Date: 2017/5/21
-  Time: 13:51
+  Time: 16:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page isELIgnored="false" %>
 <%
   String path = request.getContextPath();
   String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -34,34 +34,34 @@
   <table class="am-table">
     <thead>
     <tr>
-      <th></th><th>订单号</th><th>预约人</th><th>场地</th><th>日期</th><th>时段</th><th>操作</th>
+      <th>订单号</th><th>预约人</th><th>场地</th><th>日期</th><th>时段</th><th>操作</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${list}" var="order">
-      <tr>
-        <td><input type="checkbox" name="teacher"></td>
-        <td>${order.id}</td>
-        <td>${order.name}</td>
-        <td>${order.site_no}号${order.type}</td>
-        <td><fmt:formatDate value="${order.date}" pattern="yyyy-MM-dd"/></td>
-        <td>${order.start_time}--${order.end_time}</td>
-        <td><a class="edit" href="javascript:;">详情</a>&nbsp;<a class="delete" href="">删除</a></td>
-      </tr>
-    </c:forEach>
+      <c:forEach items="${list}" var="order">
+        <tr>
+          <td>${order.id}</td>
+          <td>${order.name}</td>
+          <td>${order.site_no}号${order.type}</td>
+          <td><fmt:formatDate value="${order.date}" pattern="yyyy-MM-dd"/></td>
+          <td>${order.start_time}--${order.end_time}</td>
+          <td><a class="edit" href="javascript:;">详情</a>&nbsp;<a class="delete" href="">取消</a></td>
+        </tr>
+      </c:forEach>
     <!-- <tr>
       <td><input type="checkbox" name="teacher"></td>
       <td>1</td>
       <td>胡瑞坤</td>
       <td>篮球场</td>
       <td>2016-02-06</td>
-      <td><a class="edit" href="javascript:;">详情</a>&nbsp;<a class="delete" href="">删除</a></td>
+      <td><a class="edit" href="javascript:;">详情</a>&nbsp;<a class="delete" href="">取消</a></td>
     </tr> -->
+
     </tbody>
   </table>
   <div class="row">
     <div class="row-left">
-      <div class="dataTables_info">共6条记录</div>
+      <div class="dataTables_info">共${order_count}条记录</div>
     </div>
     <div class="row-right">
       <ul>

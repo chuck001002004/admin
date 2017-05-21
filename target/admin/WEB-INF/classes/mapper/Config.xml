@@ -10,6 +10,9 @@
     <mappers>
         <mapper resource="mapper/AdminMapper.xml"/>
         <mapper resource="mapper/OrderMapper.xml"/>
+        <mapper resource="mapper/BasketballMapper.xml"/>
+        <mapper resource="mapper/BadmintonMapper.xml"/>
+        <mapper resource="mapper/PingpangMapper.xml"/>
     </mappers>
 
 </configuration>
