@@ -183,14 +183,13 @@ public class OrderController {
      */
     @RequestMapping(value = "/addOrder")
     public String addOrder(String userName, String phone, String date, double start_time,
-                           double end_time, int item, @RequestParam(required = false) String stadium,
-                           @RequestParam(required = false) String site_no){
-        System.out.println(userName + "  " + phone + "  " + date + "  " + start_time + "  "
-                + end_time + "  " + item + "  " + stadium);
+                           double end_time, int item, @RequestParam(required = false) String stadium){
+//        System.out.println(userName + "  " + phone + "  " + date + "  " + start_time + "  "
+//                + end_time + "  " + item + "  " + stadium);
         if(item == 0){
             basketballService.addOrder(userName, phone, date, start_time, end_time, stadium.length() == 1 ? "0" : "1", stadium);
         }else if(item == 1){
-            badmintonService.addOrder(userName, phone, date, start_time, end_time, site_no);
+            badmintonService.addOrder(userName, phone, date, start_time, end_time, stadium);
         }else{
             pingpangService.addOrder(userName, phone, date, start_time, end_time);
         }

@@ -72,4 +72,24 @@ public interface BasketballDao {
                   @Param(value = "end_time") double end_time, @Param(value = "site_type")String site_type,
                   @Param(value = "site_no") String site_no);
 
+    /**
+     * 实时查看篮球场剩余情况（普通用户预订）
+     * @param date 日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 被占用的场地号
+     */
+    List<String> getUnbookedSite(@Param("date") String date, @Param("start_time") double start_time,
+                                   @Param("end_time") double end_time);
+
+    /**
+     * 实时查看篮球场剩余情况（常驻用户预订）
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 被占用的场地号
+     */
+    List<String> getUnbookedSiteByLong(@Param("week") int week, @Param("start_time") double start_time,
+                                       @Param("end_time") double end_time);
+
 }

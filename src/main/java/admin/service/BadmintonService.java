@@ -80,4 +80,26 @@ public class BadmintonService {
         badmintonDao.addOrder(userName, phone, date, start_time, end_time, site_no);
     }
 
+    /**
+     * 实时查看羽毛球场剩余情况
+     * @param date 预约日期
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 被占用的场地号
+     */
+    public String getUnbookedSite(String date, int week, double start_time, double end_time){
+        String res = "";
+        List<String> list1 = badmintonDao.getBookedSite(date, start_time, end_time);
+        for(String s : list1){
+            res += s + ",";
+        }
+        list1 = badmintonDao.getBookedSiteByLong(week, start_time, end_time);
+        for(String s : list1){
+            res += s + ",";
+        }
+        res = res.lastIndexOf(',') == -1 ? res : res.substring(0, res.lastIndexOf(','));
+        return res;
+    }
+
 }

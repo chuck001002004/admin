@@ -70,4 +70,24 @@ public interface BadmintonDao {
                   @Param(value = "date") String date, @Param(value = "start_time") double start_time,
                   @Param(value = "end_time") double end_time, @Param(value = "site_no") String site_no);
 
+    /**
+     * 实时查看羽毛球场剩余情况（普通用户预约占用）
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 被占用的场地号
+     */
+    List<String> getBookedSite(@Param("date") String date, @Param("start_time") double start_time,
+                               @Param("end_time") double end_time);
+
+    /**
+     * 实时查看羽毛球场剩余情况（常驻用户预约占用）
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 被占用的场地号
+     */
+    List<String> getBookedSiteByLong(@Param("week") int week, @Param("start_time") double start_time,
+                                     @Param("end_time") double end_time);
+
 }

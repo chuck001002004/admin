@@ -55,41 +55,41 @@
     <div class="space"></div>
     <div id="info-ground">
       <div class="basketball active">
-        <p><input type="checkbox" name="stadium" value="1" />01号场地</p>
-        <p><input type="checkbox" name="stadium" value="2" /> 02号场地</p>
+        <p><input type="checkbox" name="stadium" value="1" id="site1"/>01号场地</p>
+        <p><input type="checkbox" name="stadium" value="2" id="site2"/> 02号场地</p>
       </div>
       <div class="basketball">
-        <p><input type="checkbox" name="stadium" value="3" />03号场地</p>
-        <p><input type="checkbox" name="stadium" value="4" /> 04号场地</p>
+        <p><input type="checkbox" name="stadium" value="3" id="site3"/>03号场地</p>
+        <p><input type="checkbox" name="stadium" value="4" id="site4"/> 04号场地</p>
       </div>
       <div class="basketball">
-        <p><input type="checkbox" name="stadium" value="5" />05号场地</p>
-        <p><input type="checkbox" name="stadium" value="6" /> 06号场地</p>
+        <p><input type="checkbox" name="stadium" value="5" id="site5"/>05号场地</p>
+        <p><input type="checkbox" name="stadium" value="6" id="site6"/> 06号场地</p>
       </div>
       <div class="basketball">
-        <p><input type="checkbox" name="stadium" value="7" />07号场地</p>
-        <p><input type="checkbox" name="stadium" value="8" /> 08号场地</p>
+        <p><input type="checkbox" name="stadium" value="7" id="site7"/>07号场地</p>
+        <p><input type="checkbox" name="stadium" value="8" id="site8"/> 08号场地</p>
       </div>
       <p class="info-list hint-info"> 注意：每人最多可预定一个全场，两个全场</p>
     </div>
     <div id="info-badmin">
       <div class="badminton active">
-        <p><input type="radio" name="site_no" value="" />01号场地</p>
+        <p><input type="radio" name="stadium" value="1" id="ground1"/>01号场地</p>
       </div>
       <div class="badminton">
-        <p><input type="radio" name="site_no" value="" /> 02号场地</p>
+        <p><input type="radio" name="stadium" value="2" id="ground2"/> 02号场地</p>
       </div>
       <div class="badminton">
-        <p><input type="radio" name="site_no" value="" />03号场地</p>
+        <p><input type="radio" name="stadium" value="3" id="ground3"/>03号场地</p>
       </div>
       <div class="badminton active">
-        <p><input type="radio" name="site_no" value="" />04号场地</p>
+        <p><input type="radio" name="stadium" value="4" id="ground4"/>04号场地</p>
       </div>
       <div class="badminton">
-        <p><input type="radio" name="site_no" value="" />05号场地</p>
+        <p><input type="radio" name="stadium" value="5" id="ground5"/>05号场地</p>
       </div>
       <div class="badminton">
-        <p><input type="radio" name="site_no" value="" />06号场地</p>
+        <p><input type="radio" name="stadium" value="6" id="ground6"/>06号场地</p>
       </div>
     </div>
     <p class="sub"><input  type="submit" value="提交"></p>
@@ -113,20 +113,99 @@
   });
 
 </script>
-
 <div style="display:none"></div>
-
 </body>
-<!--<script type="text/javascript">-->
-<!--function check(){alert("click");-->
-<!--var type = document.getElementsByName("item");-->
-<!--var i = 0;-->
-<!--for(i = 0; i < type.length; i++){-->
-<!--if(type[i].checked){-->
-<!--alert(type[i].value);-->
-<!--}-->
-<!--}-->
-<!--return false;-->
-<!--}-->
-<!--</script>-->
+  <script type="text/javascript">
+    $(function(){
+
+      //获取星期几 Sun - Sat ==> 0-6
+      function getWeek(date){
+        var d = date.split("-");
+        return new Date(d[0], parseInt(d[1]) - 1, d[2]).getDay();
+      }
+
+      //所有篮球场地checkbox可选
+      function ableAllCheckbox(){
+        for(var i = 1; i<= 8; i++){
+          var site = "#site" + i;
+          $(site).attr('disabled',false);
+        }
+      }
+
+      //所有羽毛球场地radio可选
+      function ableAllRadio(){
+        for(var i = 1; i<= 6; i++){
+          var site = "#ground" + i;
+          $(site).attr('disabled',false);
+        }
+      }
+
+      //开始时间变化
+      $("#select-time").change(function(){
+        if($("#select-time2").val() != "0" && $("#pickdate").val() != "" && $("input[name='item']:checked").val()!=null){
+          canBook();
+        }
+      });
+
+      //结束时间变化
+      $("#select-time2").change(function(){
+        if($("#select-time").val() != "0" && $("#pickdate").val() != "" && $("input[name='item']:checked").val()!=null){
+          canBook();
+        }
+      });
+
+      //日期变化
+      $("#pickdate").change(function(){
+        if($("#select-time").val() != "0" && $("#select-time2").val() != "0" && $("input[name='item']:checked").val()!=null){
+          canBook();
+        }
+      });
+
+      //场地类型变化
+      $("input[name='item']").change(function(){
+        if($("#select-time").val() != "0" && $("#select-time2").val() != "0" && $("#pickdate").val() != ""){
+          canBook();
+        }
+      });
+
+      //获取场地情况
+      function canBook(){
+        var start = $("#select-time").val();
+        var end = $("#select-time2").val();
+        var date = $("#pickdate").val();
+        var week = getWeek(date);
+        var type = $("input[name='item']:checked").val();
+        if(type == 0){
+          $.get(
+                  "<%=basePath%>basketball/getUnbookedSite",
+                  {date : date,  week : week,start_time : start, end_time : end},
+                  function(data){
+                    //alert(data);
+                    ableAllCheckbox();
+                    var arr = data.split(",");
+                    for(var i = 0; i < arr.length; i++){
+                      var site = "#site" + arr[i];
+                      $(site).attr("disabled","disabled");
+                    }
+                  }
+          );
+        }else if(type == 1){
+          $.get(
+                  "<%=basePath%>badminton/getUnbookedSite",
+                  {date : date,  week : week,start_time : start, end_time : end},
+                  function(data){
+                    //alert(data);
+                    ableAllRadio();
+                    var arr = data.split(",");
+                    for(var i = 0; i < arr.length; i++){
+                      var site = "#ground" + arr[i];
+                      $(site).attr("disabled","disabled");
+                    }
+                  }
+          );
+        }
+      }
+
+    });
+  </script>
 </html>

@@ -113,4 +113,40 @@
           #{date}, #{start_time}, #{end_time}, #{site_no}, now(), '0', '0', #{name})
     </insert>
 
+    <select id="getBookedSite" resultType="string">
+        SELECT site_no
+		FROM tb_badminton
+		WHERE date = #{date} AND start_time <![CDATA[>=]]> #{start_time} AND end_time <![CDATA[>=]]> #{end_time} AND start_time <![CDATA[<]]> #{end_time} AND ispay = '1'
+		UNION
+		SELECT site_no
+		FROM tb_badminton
+		WHERE date = #{date} AND start_time <![CDATA[>=]]> #{start_time} AND end_time <![CDATA[<=]]> #{end_time} AND ispay = '1'
+		UNION
+		SELECT site_no
+		FROM tb_badminton
+		WHERE date = #{date} AND start_time <![CDATA[<]]> #{start_time} AND end_time <![CDATA[>]]> #{end_time} AND ispay = '1'
+		UNION
+		SELECT site_no
+		FROM tb_badminton
+		WHERE date = #{date} AND start_time <![CDATA[<=]]> #{start_time} AND end_time <![CDATA[>]]> #{start_time} AND end_time <![CDATA[<=]]> #{end_time} AND ispay = '1'
+    </select>
+
+    <select id="getBookedSiteByLong" resultType="string">
+        SELECT site_no
+		FROM tb_badminton_long
+		WHERE week = #{week} AND start_time <![CDATA[>=]]> #{start_time} AND end_time <![CDATA[>=]]> #{end_time} AND start_time <![CDATA[<]]> #{end_time}
+		UNION
+		SELECT site_no
+		FROM tb_badminton_long
+		WHERE week = #{week} AND start_time <![CDATA[>=]]> #{start_time} AND end_time <![CDATA[<=]]> #{end_time}
+		UNION
+		SELECT site_no
+		FROM tb_badminton_long
+		WHERE week = #{week} AND start_time <![CDATA[<]]> #{start_time} AND end_time <![CDATA[>]]> #{end_time}
+		UNION
+		SELECT site_no
+		FROM tb_badminton_long
+		WHERE week = #{week} AND start_time <![CDATA[<=]]> #{start_time} AND end_time <![CDATA[>]]> #{start_time} AND end_time <![CDATA[<=]]> #{end_time}
+    </select>
+
 </mapper>

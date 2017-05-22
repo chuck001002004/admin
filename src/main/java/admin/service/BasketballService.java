@@ -79,4 +79,28 @@ public class BasketballService {
         basketballDao.addOrder(userName, phone, date, start_time, end_time, site_type, site_no);
     }
 
+    /**
+     * 实时查看篮球场剩余情况
+     * @param date 日期
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 被占用的场地号
+     */
+    public String getUnbookedSite(String date, int week, double start_time, double end_time){
+        String res = "";
+        //查询被普通用户预约的场地
+        List<String> list1 = basketballDao.getUnbookedSite(date, start_time, end_time);
+        for(String s : list1){
+            res += s + ",";
+        }
+        //查询被常驻用户预约的场地
+        list1 = basketballDao.getUnbookedSiteByLong(week, start_time, end_time);
+        for(String s : list1){
+            res += s + ",";
+        }
+        res = res.lastIndexOf(',') == -1 ? res : res.substring(0, res.lastIndexOf(','));
+        return res;
+    }
+
 }
