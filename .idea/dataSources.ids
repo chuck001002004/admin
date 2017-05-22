@@ -39,11 +39,15 @@
     <table name="tb_badminton_long" schema="" catalog="tyg" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5bi46am755So5oi3aWQ=" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq65aeT5ZCNL+iBlOezu+WNleS9jQ=="/>
-      <column name="phone" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq655S16K+d"/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq655S16K+d"/>
+      <column name="emergencycall" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="57Sn5oCl6IGU57O75pa55byP"/>
       <column name="week" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="start_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="5byA5aeL5pe26Ze0"/>
       <column name="end_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="57uT5p2f5pe26Ze0"/>
       <column name="site_no" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5Zy65Zyw5Y+3"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5Zyw5Z2A"/>
+      <column name="remark" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" def="Jyc=" remarks="5aSH5rOo"/>
+      <column name="money" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6YeR6aKd"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="tb_basketball" schema="" catalog="tyg" type="TABLE">
@@ -64,12 +68,16 @@
     <table name="tb_basketball_long" schema="" catalog="tyg" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5bi45L2P55So5oi3aWQ=" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="5aeT5ZCNL+WNleS9jeWQjQ=="/>
-      <column name="phone" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq655S16K+d"/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq655S16K+d"/>
+      <column name="emergencycall" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="57Sn5oCl6IGU57O75pa55byP"/>
       <column name="week" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="start_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="5byA5aeL5pe26Ze0"/>
       <column name="end_time" sqlType="DOUBLE" precision="11" scale="1" nullable="true" jdbcType="8" remarks="57uT5p2f5pe26Ze0"/>
       <column name="site_no" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5Zy65Zyw5Y+3"/>
       <column name="site_type" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5Zy65Zyw57G75Z6L"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5Zyw5Z2A"/>
+      <column name="remark" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" def="Jyc=" remarks="5aSH5rOo"/>
+      <column name="money" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6YeR6aKd"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="tb_pingpang" schema="" catalog="tyg" type="TABLE">

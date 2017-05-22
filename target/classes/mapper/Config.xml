@@ -13,6 +13,7 @@
         <mapper resource="mapper/BasketballMapper.xml"/>
         <mapper resource="mapper/BadmintonMapper.xml"/>
         <mapper resource="mapper/PingpangMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 
 </configuration>
