@@ -18,6 +18,38 @@ public class BadmintonService {
     BadmintonDao badmintonDao;
 
     /**
+     * 获取所有微信预约的羽毛球订单记录
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param start 开始记录数
+     * @param page_size 记录条数
+     * @return
+     */
+    public List<Order> getAllOrderByWechat(String userName, String phone, String date, double start_time,
+                                           double end_time, int start, int page_size){
+        return badmintonDao.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, page_size);
+    }
+
+    /**
+     * 获取所有非微信预约的羽毛球订单记录
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param start 开始记录数
+     * @param page_size 记录条数
+     * @return
+     */
+    public List<Order> getAllOrderUnwechat(String userName, String phone, String date, double start_time,
+                                           double end_time, int start, int page_size){
+        return badmintonDao.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, page_size);
+    }
+
+    /**
      * 获取所有已完成订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -137,6 +169,23 @@ public class BadmintonService {
                         String site_no, String remark){
         badmintonDao.addUser(userName, phone, emergencycall, week, start_time, end_time,
                 address, money, site_no, remark);
+    }
+
+    /**
+     * 根据id查找用户
+     * @param id 用户id
+     * @return 对应用户
+     */
+    public User getUserById(int id){
+        return badmintonDao.getUserById(id);
+    }
+
+    /**
+     * 删除用户
+     * @param id 用户id
+     */
+    public void deleteUserById(int id){
+        badmintonDao.deleteUserById(id);
     }
 
 }

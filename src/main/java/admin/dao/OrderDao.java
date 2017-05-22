@@ -21,6 +21,38 @@ public interface OrderDao {
     List<Order> getAllOrder(@Param(value = "start") int start, @Param(value = "page_size") int page_size);
 
     /**
+     * 获取微信预约的所有订单
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param start 开始记录数
+     * @param page_size 记录条数
+     * @return
+     */
+    List<Order> getAllOrderByWechat(@Param(value = "name") String userName, @Param(value = "phone")String phone,
+                                    @Param(value = "date") String date, @Param(value = "start_time") double start_time,
+                                    @Param(value = "end_time") double end_time, @Param(value = "start")int start,
+                                    @Param(value = "page_size") int page_size);
+
+    /**
+     * 获取非微信预约的所有订单
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param start 开始记录数
+     * @param page_size 记录条数
+     * @return
+     */
+    List<Order> getAllOrderUnwechat(@Param(value = "alias") String userName, @Param(value = "phone")String phone,
+                                    @Param(value = "date") String date, @Param(value = "start_time") double start_time,
+                                    @Param(value = "end_time") double end_time, @Param(value = "start")int start,
+                                    @Param(value = "page_size") int page_size);
+
+    /**
      * 获取所有已完成订单记录
      * @param userName 用户名
      * @param phone 电话

@@ -32,20 +32,47 @@ public class OrderController {
 
     final int PAGE_SIZE = 20;
 
-    /**
-     * 无条件条件筛选订单记录
-     * @param start 开始页数
-     * @param map
-     * @return 所有的订单
-     */
+
     @RequestMapping(value = "/getAllOrder")
-    public String getAllOrder(int start, Map<String, Object> map){
+    public String getAllOrder(int stadium, int wechat, String userName, String phone, String date,
+                              double start_time, double end_time, int start, Map<String, Object> map){
+        System.out.println(stadium + "  " + wechat + "  " + userName + "  " + phone + "  " + date + "  " + start_time +
+                "  " + end_time + "  " + start);
         map.put("start", start);
         start = (start - 1) * PAGE_SIZE;
-        List<Order> list = orderService.getAllOrder(start, PAGE_SIZE);
+        List<Order> list = null;
+        if(stadium == 0){
+            if(wechat == 0){    //非微信预约
+                list = orderService.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else if(wechat == 1){  //微信预约
+                list = orderService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else{  //显示所有
+                list = orderService.getAllOrder(start, PAGE_SIZE);
+            }
+        }else if(stadium == 1){
+            if(wechat == 0){
+                list = basketballService.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else{
+                list = basketballService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }
+        }else if(stadium == 2){
+            if(wechat == 0){
+                list = badmintonService.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else{
+                list = badmintonService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }
+        }else{
+            if(wechat == 0){
+                list = pingpangService.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else{
+                list = pingpangService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }
+        }
+        int order_count = list == null ? 0 : list.size();
+        int count = (int) Math.ceil(order_count / PAGE_SIZE);
         map.put("list", list);
-        int count = (int) Math.ceil(list.size() / PAGE_SIZE);
         map.put("page_count", count);
+        map.put("order_count", order_count);
         for(Order o : list){
             System.out.println(o);
         }

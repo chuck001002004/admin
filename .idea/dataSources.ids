@@ -33,6 +33,7 @@
       <column name="ispay" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5piv5ZCm5pSv5LuY"/>
       <column name="iscomplete" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
       <column name="alias" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="6K+m6KeBdGJfYmFza2V0YmFsbOazqOmHig=="/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="6K+m6KeBdGJfYmFza2V0YmFsbOazqOmHig=="/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="fk_badminton_user" unique="false" columns="userid"/>
     </table>
@@ -62,6 +63,7 @@
       <column name="ispay" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" remarks="5piv5ZCm5pSv5LuY"/>
       <column name="iscomplete" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
       <column name="alias" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5aaC5p6c5piv5b6u5L+h55So5oi377yM5a2X5q615Li655So5oi35aeT5ZCN77yM5ZCm5YiZ5Li66aKE57qm5pe255WZ55qE5aeT5ZCN"/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="6Z2e5b6u5L+h6aKE57qm55WZ55qE55S16K+d"/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="fk_basket_user" unique="false" columns="userid"/>
     </table>
@@ -90,6 +92,7 @@
       <column name="ispay" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
       <column name="iscomplete" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
       <column name="alias" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="6K+m6KeBdGJfYmFza2V0YmFsbOazqOmHig=="/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="6K+m6KeBdGJfYmFza2V0YmFsbOazqOmHig=="/>
       <primary-key name="PRIMARY" columns="id"/>
       <index name="fk_pp" unique="false" columns="userid"/>
     </table>

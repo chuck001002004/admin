@@ -11,6 +11,7 @@
 <%
   String path = request.getContextPath();
   String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+  int i = 1;
 %>
 <html>
 <head>
@@ -30,23 +31,31 @@
 <body>
 <div id="content">
   <div id="search">
-    <form action="<%=basePath%>" method="post">
-      <!-- <p class="info-list">
-          订单号：<input type="text" name="address" placeholder="请输入查找的订单号" value="">
-      </p> -->
-      <p class="info-list">场地类型：<input type="radio" name="stadium" value="1" checked="checked"/>篮球馆<input type="radio" name="stadium" value="2"/>羽毛球馆<input type="radio" name="stadium" value="3" />乒乓球馆</p>
+    <form action="<%=basePath%>order/getAllOrder" method="post">
+      <input type="hidden" value="1" name="start">
+      <p class="info-list">场地类型：
+        <input type="radio" name="stadium" value="1"/>篮球馆
+        <input type="radio" name="stadium" value="2"/>羽毛球馆
+        <input type="radio" name="stadium" value="3"/>乒乓球馆
+        <input type="radio" hidden="hidden" name="stadium" value="0" checked="checked"/>
+      </p>
+      <p class="info-list">
+        预约方式：<input type="radio" name="wechat" value="1" checked="checked">微信预约
+                <input type="radio" name="wechat" value="0">非微信预约
+                <input type="radio" name="wechat" hidden="hidden" value="2">
+      </p>
       <p class="info-list">
         预约人：<input type="text" name="userName" placeholder="请输入查找的用户名" value="">
       </p>
       <p class="info-list">
         手机号：<input type="text" name="phone" placeholder="请输入查找的手机号" value="">
-      <p class="info-list">日期选择：<input type="text" class="input" id="pickdate" placeholder="请选择日期"/></p>
+      <p class="info-list">日期选择：<input type="text" class="input" id="pickdate" placeholder="请选择日期" name="date"/></p>
       <p class="info-list">
-        预约时段：<select name="catalogs" id="select-time">
+        预约时段：<select name="start_time" id="select-time">
         <option value="0" selected="selected">起始</option>
       </select>
         <span>--</span>
-        <select name="catalogs" id="select-time2">
+        <select name="end_time" id="select-time2">
           <option value="0" selected="selected">结束</option>
         </select>
       </p>
@@ -63,7 +72,7 @@
       <tbody>
       <c:forEach items="${list}" var="order">
         <tr>
-        <td>${order.id}</td>
+        <td><%=i++%></td>
         <c:if test="${order.name == null}"><td>${order.alias}(该用户非微信用户)</td></c:if>
         <c:if test="${order.name != null}"><td>${order.name}</td></c:if>
         <td>${order.site_no}号${order.type}</td>

@@ -19,6 +19,15 @@ public class Order {
     String type;    //场地类型
     String iscomplete;  //是否已完成
     String alias;   //给非微信用户的姓名字段
+    String phone;   //非微信预约的电话
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getAlias() {
         return alias;
@@ -135,6 +144,8 @@ public class Order {
                 ", type='" + type + '\'' +
                 ", iscomplete='" + iscomplete + '\'' +
                 ", alias='" + alias + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
+
 }

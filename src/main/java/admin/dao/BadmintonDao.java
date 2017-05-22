@@ -14,6 +14,38 @@ import java.util.List;
 public interface BadmintonDao {
 
     /**
+     * 获取所有微信预约的羽毛球订单记录
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param start 开始记录数
+     * @param page_size 记录条数
+     * @return
+     */
+    List<Order> getAllOrderByWechat(@Param(value = "name") String userName, @Param(value = "phone")String phone,
+                                    @Param(value = "date") String date, @Param(value = "start_time") double start_time,
+                                    @Param(value = "end_time") double end_time, @Param(value = "start")int start,
+                                    @Param(value = "page_size") int page_size);
+
+    /**
+     * 获取所有非微信预约的羽毛球订单记录
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param start 开始记录数
+     * @param page_size 记录条数
+     * @return
+     */
+    List<Order> getAllOrderUnwechat(@Param(value = "alias") String userName, @Param(value = "phone")String phone,
+                                    @Param(value = "date") String date, @Param(value = "start_time") double start_time,
+                                    @Param(value = "end_time") double end_time, @Param(value = "start")int start,
+                                    @Param(value = "page_size") int page_size);
+
+    /**
      * 获取所有已完成订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -125,5 +157,18 @@ public interface BadmintonDao {
                  @Param(value = "start_time") double start_time, @Param(value = "end_time")double end_time,
                  @Param(value = "address") String address, @Param(value = "money")String money,
                  @Param(value = "site_no")String site_no, @Param(value = "remark")String remark);
+
+    /**
+     * 根据id查找用户
+     * @param id 用户id
+     * @return 对应用户
+     */
+    User getUserById(@Param(value = "id") int id);
+
+    /**
+     * 删除用户
+     * @param id 用户id
+     */
+    void deleteUserById(@Param(value = "id") int id);
 
 }

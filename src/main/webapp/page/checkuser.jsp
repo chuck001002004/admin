@@ -92,7 +92,18 @@
           <c:if test="${user.week == 5}"><td>星期五${user.start_time}--${user.end_time}</td></c:if>
           <c:if test="${user.week == 6}"><td>星期六${user.start_time}--${user.end_time}</td></c:if>
           <c:if test="${user.week == 0}"><td>星期日${user.start_time}--${user.end_time}</td></c:if>
-          <td><a class="edit" href="javascript:;">编辑</a>&nbsp;<a class="delete" href="">删除</a></td>
+          <c:if test="${user.type == '篮球场'}">
+            <td>
+              <a class="edit" href="<%=basePath%>user/getUserById?id=${user.id}&type=1">编辑</a>&nbsp;
+              <a class="delete" href="<%=basePath%>user/deleteUserById?id=${user.id}&type=1">删除</a>
+            </td>
+          </c:if>
+          <c:if test="${user.type == '羽毛球场'}">
+            <td>
+              <a class="edit" href="<%=basePath%>user/getUserById?id=${user.id}&type=2">编辑</a>&nbsp;
+              <a class="delete" href="<%=basePath%>user/deleteUserById?id=${user.id}&type=2">删除</a>
+            </td>
+          </c:if>
         </tr>
       </c:forEach>
     </tbody>

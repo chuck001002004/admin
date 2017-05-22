@@ -89,4 +89,41 @@ public class UserController {
         return "adduser";
     }
 
+    /**
+     * 根据id查找用户准备编辑
+     * @param id 用户id
+     * @param type 场地类型
+     * @param map
+     * @return
+     */
+    @RequestMapping(value = "/getUserById")
+    public String getUserById(int id, int type, Map<String, Object> map){
+        System.out.println(id + "  " + type);
+        if(type == 1){
+            map.put("user", basketballService.getUserById(id));
+        }else{
+            map.put("user", badmintonService.getUserById(id));
+        }
+        return "";
+    }
+
+    /**
+     * 删除常驻用户
+     * @param id 用户id
+     * @param type 用户类型（篮球/羽毛球）
+     * @return
+     */
+    @RequestMapping(value = "/deleteUserById")
+    public String deleteUserById(int id, int type){
+        System.out.println(id + "  " + type);
+        if(type == 1){
+            System.out.println("delete basketball");
+            basketballService.deleteUserById(id);
+        }else{
+            System.out.println("delete badminton");
+            badmintonService.deleteUserById(id);
+        }
+        return "redirect:/user/getAllUser?stadium=0&week=7&start_time=0&end_time=0&start=1";
+    }
+
 }
