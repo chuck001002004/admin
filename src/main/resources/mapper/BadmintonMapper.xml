@@ -30,7 +30,7 @@
                 name = #{name}
             </if>
             <if test="phone != null and phone != ''">
-                phone = #{phone}
+                AND phone = #{phone}
             </if>
         </where>
         ) b
@@ -85,12 +85,65 @@
                     name = #{name}
                 </if>
                 <if test="phone != null">
-                    phone = #{phone}
+                    AND phone = #{phone}
                 </if>
             </where>
         ) b
         ON a.userid = b.id
         ORDER BY a.date DESC LIMIT #{start}, #{page_size}
+    </select>
+
+    <select id="getAllCompleteOrderByWechat" resultType="admin.vo.Order">
+        SELECT a.*, b.name FROM
+        (
+        SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete
+        FROM tb_badminton
+        WHERE iscomplete = '1'
+        <if test="date != null and date != ''">
+            AND date = #{date}
+        </if>
+        <if test="start_time != 0">
+            AND start_time = #{start_time}
+        </if>
+        <if test="end_time != 0">
+            AND end_time = #{end_time}
+        </if>
+        ) a,
+        (
+        SELECT id, name
+        FROM tb_user
+        <where>
+            <if test="name != null and name != ''">
+                name = #{name}
+            </if>
+            <if test="phone != null and phone != ''">
+                AND phone = #{phone}
+            </if>
+        </where>
+        ) b
+        WHERE a.userid = b.id
+        ORDER BY a.date DESC LIMIT #{start}, #{page_size}
+    </select>
+
+    <select id="getAllCompleteOrderUnwechat" resultType="admin.vo.Order">
+        SELECT id, userid, date, '羽毛球场' type, start_time, end_time, ispay, site_no, iscomplete, alias, phone
+        FROM tb_badminton
+        WHERE alias IS  NOT NULL AND alias != '' AND iscomplete = '1'
+        <if test="alias != null and alias != ''">
+            AND alias = #{alias}
+        </if>
+        <if test="phone != null and phone != ''">
+            AND phone = #{phone}
+        </if>
+        <if test="date != null and date != ''">
+            AND date = #{date}
+        </if>
+        <if test="start_time != 0">
+            AND start_time = #{start_time}
+        </if>
+        <if test="end_time != 0">
+            AND end_time = #{end_time}
+        </if>
     </select>
 
     <select id="getAllIncompleteOrder" resultType="admin.vo.Order">

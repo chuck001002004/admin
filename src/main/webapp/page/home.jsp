@@ -42,7 +42,6 @@
       <p class="info-list">
         预约方式：<input type="radio" name="wechat" value="1" checked="checked">微信预约
                 <input type="radio" name="wechat" value="0">非微信预约
-                <input type="radio" name="wechat" hidden="hidden" value="2">
       </p>
       <p class="info-list">
         预约人：<input type="text" name="userName" placeholder="请输入查找的用户名" value="">

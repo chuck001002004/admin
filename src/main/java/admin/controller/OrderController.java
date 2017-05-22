@@ -36,8 +36,8 @@ public class OrderController {
     @RequestMapping(value = "/getAllOrder")
     public String getAllOrder(int stadium, int wechat, String userName, String phone, String date,
                               double start_time, double end_time, int start, Map<String, Object> map){
-        System.out.println(stadium + "  " + wechat + "  " + userName + "  " + phone + "  " + date + "  " + start_time +
-                "  " + end_time + "  " + start);
+//        System.out.println(stadium + "  " + wechat + "  " + userName + "  " + phone + "  " + date + "  " + start_time +
+//                "  " + end_time + "  " + start);
         map.put("start", start);
         start = (start - 1) * PAGE_SIZE;
         List<Order> list = null;
@@ -73,9 +73,9 @@ public class OrderController {
         map.put("list", list);
         map.put("page_count", count);
         map.put("order_count", order_count);
-        for(Order o : list){
-            System.out.println(o);
-        }
+//        for(Order o : list){
+//            System.out.println(o);
+//        }
         return "home";
     }
 
@@ -93,18 +93,33 @@ public class OrderController {
      * @return 已完成订单
      */
     @RequestMapping(value = "/getAllCompleteOrder")
-    public String getAllCompelteOrder(int stadium, String userName, String phone, String date,
+    public String getAllCompelteOrder(int stadium, int wechat, String userName, String phone, String date,
                                       double start_time, double end_time, int start, Map<String, Object> map){
-//        System.out.println(stadium + "  " + userName + "  " + phone + "  " + date + "  " + start_time + "  " + end_time + "  " + start);
+        System.out.println(stadium + "  " + wechat + "  " + userName + "  " + phone + "  " + date + "  " + start_time +
+                "  " + end_time + "  " + start);
         map.put("start", start);
         start = (start - 1) * PAGE_SIZE;
         List<Order> list = null;
         if(stadium == 0){
-            list = orderService.getAllCompleteOrder(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            if(wechat == 0){    //非微信预约
+                list = orderService.getAllCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else if(wechat == 1){  //微信预约
+                list = orderService.getAllCompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else{  //全部
+                list = orderService.getAllCompleteOrder(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }
         }else if(stadium == 1){
-            list = basketballService.getAllCompleteOrder(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            if(wechat == 0){
+                list = basketballService.getAllCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else{
+                list = basketballService.getAllCompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }
         }else if(stadium == 2){
-            list = badmintonService.getAllCompleteOrder(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            if(wechat == 0){
+                list = badmintonService.getAllCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }else{
+                list = badmintonService.getAllCompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
+            }
         }else{
             list = pingpangService.getAllCompleteOrder(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
         }
