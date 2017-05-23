@@ -21,6 +21,12 @@ public interface OrderDao {
     List<Order> getAllOrder(@Param(value = "start") int start, @Param(value = "page_size") int page_size);
 
     /**
+     * 获取所有订单记录数
+     * @return 所有的订单
+     */
+    public int getAllOrderCount();
+
+    /**
      * 获取微信预约的所有订单
      * @param userName 用户名
      * @param phone 电话
@@ -31,10 +37,23 @@ public interface OrderDao {
      * @param page_size 记录条数
      * @return
      */
-    List<Order> getAllOrderByWechat(@Param(value = "name") String userName, @Param(value = "phone")String phone,
+    List<Order> getAllOrderByWechat(@Param(value = "name") String userName, @Param(value = "phone") String phone,
                                     @Param(value = "date") String date, @Param(value = "start_time") double start_time,
                                     @Param(value = "end_time") double end_time, @Param(value = "start")int start,
                                     @Param(value = "page_size") int page_size);
+
+    /**
+     * 获取微信预约的所有订单数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone,
+                                        @Param(value = "date") String date, @Param(value = "start_time") double start_time,
+                                        @Param(value = "end_time") double end_time);
 
     /**
      * 获取非微信预约的所有订单
@@ -53,6 +72,19 @@ public interface OrderDao {
                                     @Param(value = "page_size") int page_size);
 
     /**
+     * 获取非微信预约的所有订单数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone,
+                                        @Param(value = "date") String date, @Param(value = "start_time") double start_time,
+                                        @Param(value = "end_time") double end_time);
+
+    /**
      * 获取所有已完成订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -66,6 +98,18 @@ public interface OrderDao {
     List<Order> getAllCompleteOrder(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                     @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
                                     @Param(value = "start") int start, @Param(value = "page_size") int page_size);
+
+    /**
+     * 获取所有已完成订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 所有已完成的订单
+     */
+    public int getAllCompleteOrderCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                                @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
      * 获取所有已完成微信预约订单记录
@@ -83,6 +127,18 @@ public interface OrderDao {
                                     @Param(value = "start") int start, @Param(value = "page_size") int page_size);
 
     /**
+     * 获取所有已完成微信预约订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllCompleteOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                                @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
+
+    /**
      * 获取所有已完成非微信预约订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -96,6 +152,18 @@ public interface OrderDao {
     List<Order> getAllCompleteOrderUnwechat(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                             @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
                                             @Param(value = "start") int start, @Param(value = "page_size") int page_size);
+
+    /**
+     * 获取所有已完成非微信预约订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllCompleteOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                                @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
      * 获取所有未完成订单记录
@@ -113,6 +181,18 @@ public interface OrderDao {
                                     @Param(value = "start") int start, @Param(value = "page_size") int page_size);
 
     /**
+     * 获取所有未完成订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 所有未完成的订单
+     */
+    int getAllIncompleteOrderCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                          @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
+
+    /**
      * 获取所有未完成微信预约订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -126,6 +206,18 @@ public interface OrderDao {
     List<Order> getAllInCompleteOrderByWechat(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                       @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
                                       @Param(value = "start") int start, @Param(value = "page_size") int page_size);
+
+    /**
+     * 获取所有未完成微信预约订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllIncompleteOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                                  @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
      * 获取所有未完成非微信预约订单记录
@@ -143,6 +235,18 @@ public interface OrderDao {
                                               @Param(value = "start") int start, @Param(value = "page_size") int page_size);
 
     /**
+     * 获取所有未完成非微信预约订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllIncompleteOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                                  @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
+
+    /**
      * 获取所有未支付订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -156,6 +260,18 @@ public interface OrderDao {
     List<Order> getAllUnpayOrder(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                       @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
                                       @Param(value = "start") int start, @Param(value = "page_size") int page_size);
+
+    /**
+     * 获取所有未支付订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllUnpayOrderCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                     @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
      * 获取所有未支付微信预约订单记录
@@ -173,6 +289,18 @@ public interface OrderDao {
                                  @Param(value = "start") int start, @Param(value = "page_size") int page_size);
 
     /**
+     * 获取所有未支付微信支付订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllUnpayOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                             @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
+
+    /**
      * 获取所有未支付非微信预约订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -186,5 +314,17 @@ public interface OrderDao {
     List<Order> getAllUnpayOrderUnwechat(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                          @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
                                          @Param(value = "start") int start, @Param(value = "page_size") int page_size);
+
+    /**
+     * 获取所有未支付非微信支付订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllUnpayOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+                                             @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
 }

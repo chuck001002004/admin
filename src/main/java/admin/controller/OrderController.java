@@ -52,15 +52,26 @@ public class OrderController {
                               double start_time, double end_time, int start, Map<String, Object> map){
 //        System.out.println(stadium + "  " + wechat + "  " + userName + "  " + phone + "  " + date + "  " + start_time +
 //                "  " + end_time + "  " + start);
+        map.put("stadium", stadium);
+        map.put("wechat", wechat);
+        map.put("userName", (userName == null || userName.equals("")) ? "" : userName);
+        map.put("phone", (phone == null || phone.equals("")) ? "" : phone);
+        map.put("date", (date == null || date.equals("")) ? "" : date);
+        map.put("start_time", start_time);
+        map.put("end_time", end_time);
         map.put("start", start);
+        int order_count = 0;
         start = (start - 1) * PAGE_SIZE;
         List<Order> list = null;
         if(stadium == 0){
             if(wechat == 0){    //非微信预约
+                order_count = orderService.getAllOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else if(wechat == 1){  //微信预约
+                order_count = orderService.getAllOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{  //显示所有
+                order_count = orderService.getAllOrderCount();
                 list = orderService.getAllOrder(start, PAGE_SIZE);
             }
         }else if(stadium == 1){
@@ -82,11 +93,10 @@ public class OrderController {
                 list = pingpangService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }
-        int order_count = list == null ? 0 : list.size();
-        int count = (int) Math.ceil(order_count / PAGE_SIZE);
+        int count = (int) Math.ceil((double)order_count / (double)PAGE_SIZE);
         map.put("list", list);
         map.put("page_count", count);
-        map.put("order_count", order_count);
+        map.put("cnt", list == null ? 0 : list.size());
 //        for(Order o : list){
 //            System.out.println(o);
 //        }
@@ -110,15 +120,26 @@ public class OrderController {
     @RequestMapping(value = "/getAllCompleteOrder")
     public String getAllCompelteOrder(int stadium, int wechat, String userName, String phone, String date,
                                       double start_time, double end_time, int start, Map<String, Object> map){
+        map.put("stadium", stadium);
+        map.put("wechat", wechat);
+        map.put("userName", (userName == null || userName.equals("")) ? "" : userName);
+        map.put("phone", (phone == null || phone.equals("")) ? "" : phone);
+        map.put("date", (date == null || date.equals("")) ? "" : date);
+        map.put("start_time", start_time);
+        map.put("end_time", end_time);
         map.put("start", start);
+        int order_count = 0;
         start = (start - 1) * PAGE_SIZE;
         List<Order> list = null;
         if(stadium == 0){
             if(wechat == 0){    //非微信预约
+                order_count = orderService.getAllCompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else if(wechat == 1){  //微信预约
+                order_count = orderService.getAllCompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllCompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{  //全部
+                order_count = orderService.getAllCompleteOrderCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllCompleteOrder(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else if(stadium == 1){
@@ -140,11 +161,10 @@ public class OrderController {
                 list = pingpangService.getAllCompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }
-        int order_count = list == null ? 0 : list.size();
-        int count = (int) Math.ceil(order_count / PAGE_SIZE);
+        int count = (int) Math.ceil((double)order_count / (double)PAGE_SIZE);
         map.put("list", list);
         map.put("page_count", count);
-        map.put("order_count", order_count);
+        map.put("cnt", list == null ? 0 : list.size());
 //        for(Order o : list){
 //            System.out.println(o);
 //        }
@@ -168,15 +188,26 @@ public class OrderController {
     @RequestMapping(value = "/getAllIncompleteOrder")
     public String getAllIncompleteOrder(int stadium, int wechat, String userName, String phone, String date,
                                         double start_time, double end_time, int start, Map<String, Object> map){
+        map.put("stadium", stadium);
+        map.put("wechat", wechat);
+        map.put("userName", (userName == null || userName.equals("")) ? "" : userName);
+        map.put("phone", (phone == null || phone.equals("")) ? "" : phone);
+        map.put("date", (date == null || date.equals("")) ? "" : date);
+        map.put("start_time", start_time);
+        map.put("end_time", end_time);
         map.put("start", start);
+        int order_count = 0;
         start = (start - 1) * PAGE_SIZE;
         List<Order> list = null;
         if(stadium == 0){
             if(wechat == 0){
+                order_count = orderService.getAllIncompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllIncompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else if(wechat == 1){
+                order_count = orderService.getAllIncompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllIncompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = orderService.getAllIncompleteOrderCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllIncompleteOrder(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else if(stadium == 1){
@@ -198,11 +229,10 @@ public class OrderController {
                 list = pingpangService.getAllIncompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }
-        int order_count = list == null ? 0 : list.size();
-        int count = (int) Math.ceil(order_count / PAGE_SIZE);
+        int count = (int) Math.ceil((double)order_count / (double)PAGE_SIZE);
         map.put("list", list);
         map.put("page_count", count);
-        map.put("order_count", order_count);
+        map.put("cnt", list == null ? 0 : list.size());
 //        for(Order o : list){
 //            System.out.println(o);
 //        }
@@ -228,15 +258,26 @@ public class OrderController {
                                    double start_time, double end_time, int start, Map<String, Object> map){
 //        System.out.println(stadium + "  " + wechat + "  " + userName + "  " + phone + "  " + date + "  " + start_time +
 //                "  " + end_time + "  " + start);
+        map.put("stadium", stadium);
+        map.put("wechat", wechat);
+        map.put("userName", (userName == null || userName.equals("")) ? "" : userName);
+        map.put("phone", (phone == null || phone.equals("")) ? "" : phone);
+        map.put("date", (date == null || date.equals("")) ? "" : date);
+        map.put("start_time", start_time);
+        map.put("end_time", end_time);
         map.put("start", start);
+        int order_count = 0;
         start = (start - 1) * PAGE_SIZE;
         List<Order> list = null;
         if(stadium == 0){
             if(wechat == 0){
+                order_count = orderService.getAllUnpayOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllUnpayOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else if(wechat == 1){
+                order_count = orderService.getAllUnpayOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllUnpayOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = orderService.getAllUnpayOrderCount(userName, phone, date, start_time, end_time);
                 list = orderService.getAllUnpayOrder(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else if(stadium == 1){
@@ -258,11 +299,10 @@ public class OrderController {
                 list = pingpangService.getAllUnpayOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }
-        int order_count = list == null ? 0 : list.size();
-        int count = (int) Math.ceil(order_count / PAGE_SIZE);
+        int count = (int) Math.ceil((double)order_count / (double)PAGE_SIZE);
         map.put("list", list);
         map.put("page_count", count);
-        map.put("order_count", order_count);
+        map.put("cnt", list == null ? 0 : list.size());
 //        for(Order o : list){
 //            System.out.println(o);
 //        }

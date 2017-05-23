@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page isELIgnored="false" %>
 <%
   String path = request.getContextPath();
@@ -32,7 +33,6 @@
 <div id="content">
   <div id="search">
     <form action="<%=basePath%>order/getAllOrder" method="post">
-      <input type="hidden" value="1" name="start">
       <p class="info-list">场地类型：
         <input type="radio" name="stadium" value="1"/>篮球馆
         <input type="radio" name="stadium" value="2"/>羽毛球馆
@@ -58,8 +58,10 @@
           <option value="0" selected="selected">结束</option>
         </select>
       </p>
+      <input type="hidden" value="1" name="start">
       <p class="sub"><input  type="submit" value="查询"></p>
     </form>
+
   </div>
   <div id="sch-result">
     <table class="am-table">
@@ -75,7 +77,7 @@
         <c:if test="${order.name == null}"><td>${order.alias}(该用户非微信用户)</td></c:if>
         <c:if test="${order.name != null}"><td>${order.name}</td></c:if>
         <td>${order.site_no}号${order.type}</td>
-        <td>${order.start_time}--${order.end_time}</td>
+        <td><fmt:formatDate value="${order.date}" pattern="yyyy-MM-dd"/>&nbsp;${order.start_time}--${order.end_time}</td>
         <c:if test="${order.ispay == '1' && order.iscomplete == '1'}">
           <td>已完成</td>
         </c:if>
@@ -99,6 +101,10 @@
 
       </tbody>
     </table>
+    <div style="float:left">
+      共${cnt}条记录
+    </div>
+    <div style="float:right">第<select name="page" id="page"><option value="0">--</option></select>页</div>
   </div>
 </div>
 
@@ -118,7 +124,35 @@
   });
 
 </script>
+<script type="text/javascript">
+  //分页下拉框模块
+  $(function(){
 
+    //构建下拉框
+    pageSelect();
+
+    //分页下拉框函数
+    function pageSelect(){
+      var str = "";
+      var i = 1;
+      for(i = 1; i <= ${page_count}; i++){
+        if(i == ${start}){
+          str += "<option value='" + i + "' selected='selected'>" + i + "</option>";
+        }else{
+          str += "<option value='" + i + "'>" + i + "</option>";
+        }
+      }
+      $("#page").html(str);
+    }
+
+    //页面跳转
+    $("#page").change(function(){
+      var start = $("#page").val();
+      window.location.href="<%=basePath%>order/getAllOrder?stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&start="+start;
+    });
+
+  });
+</script>
 <div style="display:none"></div>
 
 </body>
