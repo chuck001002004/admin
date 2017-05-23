@@ -359,4 +359,11 @@ public interface BadmintonDao {
      */
     void deleteUserById(@Param(value = "id") int id);
 
+    /**
+     * É¾³ý¶©µ¥
+     * @param id ¶©µ¥id
+     * @return
+     */
+    void deleteOrder(int id);
+
 }

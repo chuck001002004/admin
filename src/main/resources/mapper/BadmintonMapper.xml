@@ -633,4 +633,8 @@
         DELETE FROM tb_badminton_long WHERE id = #{id}
     </delete>
 
+    <delete id="deleteOrder">
+        DELETE FROM tb_badminton WHERE id = #{id}
+    </delete>
+
 </mapper>

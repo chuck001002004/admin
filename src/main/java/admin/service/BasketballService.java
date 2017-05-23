@@ -397,4 +397,13 @@ public class BasketballService {
         basketballDao.deleteUserById(id);
     }
 
+    /**
+     * É¾³ý¶©µ¥
+     * @param id ¶©µ¥id
+     * @return
+     */
+    public void deleteOrder(int id){
+        basketballDao.deleteOrder(id);
+    }
+
 }

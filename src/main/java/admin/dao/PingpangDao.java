@@ -289,4 +289,11 @@ public interface PingpangDao {
                   @Param(value = "date") String date, @Param(value = "start_time") double start_time,
                   @Param(value = "end_time") double end_time);
 
+    /**
+     * É¾³ý¶©µ¥
+     * @param id ¶©µ¥id
+     * @return
+     */
+    void deleteOrder(int id);
+
 }

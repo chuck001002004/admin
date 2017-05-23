@@ -396,4 +396,13 @@ public class BadmintonService {
         badmintonDao.deleteUserById(id);
     }
 
+    /**
+     * É¾³ý¶©µ¥
+     * @param id ¶©µ¥id
+     * @return
+     */
+    public void deleteOrder(int id){
+        badmintonDao.deleteOrder(id);
+    }
+
 }

@@ -319,4 +319,13 @@ public class PingpangService {
         pingpangDao.addOrder(userName, phone, date, start_time, end_time);
     }
 
+    /**
+     * É¾³ý¶©µ¥
+     * @param id ¶©µ¥id
+     * @return
+     */
+    public void deleteOrder(int id){
+        pingpangDao.deleteOrder(id);
+    }
+
 }
