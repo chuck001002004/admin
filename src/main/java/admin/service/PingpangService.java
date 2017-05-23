@@ -33,6 +33,20 @@ public class PingpangService {
     }
 
     /**
+     * 获取所有微信预约的乒乓球订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllOrderByWechatCount(String userName, String phone, String date, double start_time,
+                                           double end_time){
+        return pingpangDao.getAllOrderByWechatCount(userName, phone, date, start_time, end_time);
+    }
+
+    /**
      * 获取所有非微信预约的乒乓球订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -46,6 +60,20 @@ public class PingpangService {
     public List<Order> getAllOrderUnwechat(String userName, String phone, String date, double start_time,
                                            double end_time, int start, int page_size){
         return pingpangDao.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, page_size);
+    }
+
+    /**
+     * 获取所有非微信预约的乒乓球订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllOrderUnwechatCount(String userName, String phone, String date, double start_time,
+                                           double end_time){
+        return pingpangDao.getAllOrderUnwechatCount(userName, phone, date, start_time, end_time);
     }
 
     /**
@@ -81,6 +109,20 @@ public class PingpangService {
     }
 
     /**
+     * 获取所有已完成微信预约订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllCompleteOrderByWechatCount(String userName, String phone, String date, double start_time,
+                                                   double end_time){
+        return pingpangDao.getAllCompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
+    }
+
+    /**
      * 获取所有已完成非微信预约订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -94,6 +136,20 @@ public class PingpangService {
     public List<Order> getAllCompleteOrderUnwechat(String userName, String phone, String date, double start_time,
                                                    double end_time, int start, int page_size){
         return pingpangDao.getAllCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, page_size);
+    }
+
+    /**
+     * 获取所有已完成非微信预约订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllCompleteOrderUnwechatCount(String userName, String phone, String date, double start_time,
+                                                   double end_time){
+        return pingpangDao.getAllCompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
     }
 
     /**
@@ -129,6 +185,20 @@ public class PingpangService {
     }
 
     /**
+     * 获取所有未完成微信预约订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllIncompleteOrderByWechatCount(String userName, String phone, String date, double start_time,
+                                                     double end_time){
+        return pingpangDao.getAllInCompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
+    }
+
+    /**
      * 获取所有未完成非微信预约订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -142,6 +212,20 @@ public class PingpangService {
     public List<Order> getAllIncompleteOrderUnwechat(String userName, String phone, String date, double start_time,
                                                      double end_time, int start, int page_size){
         return pingpangDao.getAllInCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, page_size);
+    }
+
+    /**
+     * 获取所有未完成非微信预约订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllIncompleteOrderUnwechatCount(String userName, String phone, String date, double start_time,
+                                                     double end_time){
+        return pingpangDao.getAllInCompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
     }
 
     /**
@@ -177,6 +261,20 @@ public class PingpangService {
     }
 
     /**
+     * 获取所有未支付微信支付订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllUnpayOrderByWechatCount(String userName, String phone, String date, double start_time,
+                                                double end_time){
+        return pingpangDao.getAllUnpayOrderByWechatCount(userName, phone, date, start_time, end_time);
+    }
+
+    /**
      * 获取所有未支付非微信支付订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -190,6 +288,20 @@ public class PingpangService {
     public List<Order> getAllUnpayOrderUnwechat(String userName, String phone, String date, double start_time,
                                                 double end_time, int start, int page_size){
         return pingpangDao.getAllUnpayOrderUnwechat(userName, phone, date, start_time, end_time, start, page_size);
+    }
+
+    /**
+     * 获取所有未支付非微信支付订单记录数
+     * @param userName 用户名
+     * @param phone 电话
+     * @param date 预约日期
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return
+     */
+    public int getAllUnpayOrderUnwechatCount(String userName, String phone, String date, double start_time,
+                                                double end_time){
+        return pingpangDao.getAllUnpayOrderUnwechatCount(userName, phone, date, start_time, end_time);
     }
 
     /**

@@ -76,20 +76,26 @@ public class OrderController {
             }
         }else if(stadium == 1){
             if(wechat == 0){
+                order_count = basketballService.getAllOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = basketballService.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = basketballService.getAllOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = basketballService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else if(stadium == 2){
             if(wechat == 0){
+                order_count = badmintonService.getAllOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = badmintonService.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = badmintonService.getAllOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = badmintonService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else{
             if(wechat == 0){
+                order_count = pingpangService.getAllOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = pingpangService.getAllOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = pingpangService.getAllOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = pingpangService.getAllOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }
@@ -144,20 +150,26 @@ public class OrderController {
             }
         }else if(stadium == 1){
             if(wechat == 0){
+                order_count = basketballService.getAllCompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = basketballService.getAllCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = basketballService.getAllCompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = basketballService.getAllCompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else if(stadium == 2){
             if(wechat == 0){
+                order_count = badmintonService.getAllCompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = badmintonService.getAllCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = badmintonService.getAllCompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = badmintonService.getAllCompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else{
             if(wechat == 0){
+                order_count = pingpangService.getAllCompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = pingpangService.getAllCompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = pingpangService.getAllCompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = pingpangService.getAllCompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }
@@ -212,20 +224,26 @@ public class OrderController {
             }
         }else if(stadium == 1){
             if(wechat == 0){
+                order_count = basketballService.getAllIncompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = basketballService.getAllIncompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = basketballService.getAllIncompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = basketballService.getAllIncompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else if(stadium == 2){
             if(wechat == 0){
+                order_count = badmintonService.getAllIncompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = badmintonService.getAllIncompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = badmintonService.getAllIncompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = badmintonService.getAllIncompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else{
             if(wechat == 0){
+                order_count = pingpangService.getAllIncompleteOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = pingpangService.getAllIncompleteOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = pingpangService.getAllIncompleteOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = pingpangService.getAllIncompleteOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }
@@ -282,20 +300,26 @@ public class OrderController {
             }
         }else if(stadium == 1){
             if(wechat == 0){
+                order_count = basketballService.getAllUnpayOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = basketballService.getAllUnpayOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = basketballService.getAllUnpayOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = basketballService.getAllUnpayOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else if(stadium == 2){
             if(wechat == 0){
+                order_count = badmintonService.getAllUnpayOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = badmintonService.getAllUnpayOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = badmintonService.getAllUnpayOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = badmintonService.getAllUnpayOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }else{
             if(wechat == 0){
+                order_count = pingpangService.getAllUnpayOrderUnwechatCount(userName, phone, date, start_time, end_time);
                 list = pingpangService.getAllUnpayOrderUnwechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }else{
+                order_count = pingpangService.getAllUnpayOrderByWechatCount(userName, phone, date, start_time, end_time);
                 list = pingpangService.getAllUnpayOrderByWechat(userName, phone, date, start_time, end_time, start, PAGE_SIZE);
             }
         }
