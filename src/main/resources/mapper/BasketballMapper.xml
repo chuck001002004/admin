@@ -59,7 +59,7 @@
         </if>
     </select>
 
-    <select id="getAllCompleteOrder" resultType="admin.vo.Order">
+    <!-- <select id="getAllCompleteOrder" resultType="admin.vo.Order">
         SELECT a.*, b.name
         FROM
         (
@@ -91,7 +91,7 @@
         ) b
         ON a.userid = b.id
         ORDER BY a.date DESC LIMIT #{start}, #{page_size}
-    </select>
+    </select> -->
 
     <select id="getAllCompleteOrderByWechat" resultType="admin.vo.Order">
         SELECT a.*, b.name
@@ -147,20 +147,20 @@
         </if>
     </select>
 
-    <select id="getAllIncompleteOrder" resultType="admin.vo.Order">
+    <!-- <select id="getAllIncompleteOrder" resultType="admin.vo.Order">
         SELECT a.*, b.name
         FROM
         (
             SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, alias
             FROM tb_basketball
             WHERE ispay = '1' AND iscomplete = '0'
-            <if test="date != null">
+            <if test="date != null and date != ''">
                 AND date = #{date}
             </if>
-            <if test="start_time != null">
+            <if test="start_time != 0">
                 AND start_time = #{start_time}
             </if>
-            <if test="end_time != null">
+            <if test="end_time != 0">
                 AND end_time = #{end_time}
             </if>
         ) a
@@ -169,19 +169,73 @@
             SELECT id, name
             FROM tb_user
             <where>
-                <if test="name != null">
+                <if test="name != null and name != ''">
                     name = #{name}
                 </if>
-                <if test="phone != null">
+                <if test="phone != null and phone != ''">
                     AND phone = #{phone}
                 </if>
             </where>
         ) b
         ON a.userid = b.id
         ORDER BY a.date DESC LIMIT #{start}, #{page_size}
+    </select> -->
+
+    <select id="getAllInCompleteOrderByWechat" resultType="admin.vo.Order">
+        SELECT a.*, b.name
+        FROM
+        (
+        SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, alias
+        FROM tb_basketball
+        WHERE ispay = '1' AND iscomplete = '0'
+        <if test="date != null and date != ''">
+            AND date = #{date}
+        </if>
+        <if test="start_time != 0">
+            AND start_time = #{start_time}
+        </if>
+        <if test="end_time != 0">
+            AND end_time = #{end_time}
+        </if>
+        ) a,
+        (
+        SELECT id, name
+        FROM tb_user
+        <where>
+            <if test="name != null and name != ''">
+                name = #{name}
+            </if>
+            <if test="phone != null and phone != ''">
+                AND phone = #{phone}
+            </if>
+        </where>
+        ) b
+        WHERE a.userid = b.id
+        ORDER BY a.date DESC LIMIT #{start}, #{page_size}
     </select>
 
-    <select id="getAllUnpayOrder" resultType="admin.vo.Order">
+    <select id="getAllInCompleteOrderUnwechat" resultType="admin.vo.Order">
+        SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete, alias, phone
+        FROM tb_basketball
+        WHERE alias IS  NOT NULL AND alias != '' AND ispay = '1' AND iscomplete = '0'
+        <if test="alias != null and alias != ''">
+            AND alias = #{alias}
+        </if>
+        <if test="phone != null and phone != ''">
+            AND phone = #{phone}
+        </if>
+        <if test="date != null and date != ''">
+            AND date = #{date}
+        </if>
+        <if test="start_time != 0">
+            AND start_time = #{start_time}
+        </if>
+        <if test="end_time != 0">
+            AND end_time = #{end_time}
+        </if>
+    </select>
+
+    <!-- <select id="getAllUnpayOrder" resultType="admin.vo.Order">
         SELECT a.*, b.name
         FROM
         (
@@ -213,6 +267,60 @@
         WHERE a.userid = b.id
         ORDER BY a.date DESC
         LIMIT #{start}, #{page_size}
+    </select> -->
+
+    <select id="getAllUnpayOrderByWechat" resultType="admin.vo.Order">
+        SELECT a.*, b.name
+        FROM
+        (
+        SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete, alias
+        FROM tb_basketball
+        WHERE ispay = '0'
+        <if test="date != null and date != ''">
+            AND date = #{date}
+        </if>
+        <if test="start_time != 0">
+            AND start_time = #{start_time}
+        </if>
+        <if test="end_time != 0">
+            AND end_time = #{end_time}
+        </if>
+        ) a,
+        (
+        SELECT id, name
+        FROM tb_user
+        <where>
+            <if test="name != null and name != ''">
+                name = #{name}
+            </if>
+            <if test="phone != null and phone != ''">
+                AND phone = #{phone}
+            </if>
+        </where>
+        ) b
+        WHERE a.userid = b.id
+        ORDER BY a.date DESC LIMIT #{start}, #{page_size}
+    </select>
+
+    <select id="getAllUnpayOrderUnwechat" resultType="admin.vo.Order">
+        SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, iscomplete, alias, phone
+        FROM tb_basketball
+        WHERE alias IS  NOT NULL AND alias != '' AND ispay = '0'
+        <if test="alias != null and alias != ''">
+            AND alias = #{alias}
+        </if>
+        <if test="phone != null and phone != ''">
+            AND phone = #{phone}
+        </if>
+        <if test="date != null and date != ''">
+            AND date = #{date}
+        </if>
+        <if test="start_time != 0">
+            AND start_time = #{start_time}
+        </if>
+        <if test="end_time != 0">
+            AND end_time = #{end_time}
+        </if>
     </select>
 
     <insert id="addOrder">

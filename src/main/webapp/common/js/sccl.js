@@ -398,8 +398,8 @@ $(function(){
 					{"id":"3","name":"订单管理","parentId":"1","url":"","icon":"&#xe604;","order":"1","isHeader":"0","childMenus":[
 						{"id":"4","name":"全部订单","parentId":"3","url":"order/getAllOrder?stadium=0&start_time=0&end_time=0&start=1&wechat=2","icon":"","order":"1","isHeader":"0","childMenus":""},
 						{"id":"4","name":"已完成","parentId":"3","url":"order/getAllCompleteOrder?stadium=0&start_time=0&end_time=0&start=1&wechat=2","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"5","name":"未完成","parentId":"3","url":"order/getAllIncompleteOrder?stadium=0&start_time=0&end_time=0&start=1","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"6","name":"未支付","parentId":"3","url":"order/getAllUnpayOrder?stadium=0&start_time=0&end_time=0&start=1","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"5","name":"未完成","parentId":"3","url":"order/getAllIncompleteOrder?stadium=0&start_time=0&end_time=0&start=1&wechat=2","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"6","name":"未支付","parentId":"3","url":"order/getAllUnpayOrder?stadium=0&start_time=0&end_time=0&start=1&wechat=2","icon":"","order":"1","isHeader":"0","childMenus":""},
 						{"id":"6","name":"添加订单","parentId":"3","url":"page/additem.jsp","icon":"","order":"1","isHeader":"0","childMenus":""}
 					]},
 					{"id":"6","name":"常驻用户管理","parentId":"1","url":"","icon":"&#xe602;","order":"1","isHeader":"0","childMenus":[
