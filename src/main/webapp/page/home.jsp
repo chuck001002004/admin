@@ -87,22 +87,31 @@
         <c:if test="${order.ispay == '1' && order.iscomplete == '0'}">
           <td>未完成</td>
         </c:if>
-        <c:if test="${order.type=='篮球场'}">
-          <td><a class="edit" href="javascript:;">详情</a>&nbsp;
-            <a class="delete" href="<%=basePath%>basketball/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=home&start=${start}">删除</a></td>
-        </c:if>
-        <c:if test="${order.type=='羽毛球场'}">
-          <td>
-            <a class="edit" href="javascript:;">详情</a>&nbsp;
-            <a class="delete" href="<%=basePath%>badminton/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=home&start=${start}">删除</a>
-          </td>
-        </c:if>
+        <c:if test="${order.iscomplete == '1'}">
+          <c:if test="${order.type=='篮球场'}">
+          <%--<td><a class="edit" href="javascript:;">详情</a>&nbsp;--%>
+            <td>
+              <a class="delete" href="<%=basePath%>basketball/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=home&start=${start}">删除</a>
+            </td>
+          </c:if>
+          <c:if test="${order.type=='羽毛球场'}">
+            <td>
+              <%--<a class="edit" href="javascript:;">详情</a>&nbsp;--%>
+              <a class="delete" href="<%=basePath%>badminton/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=home&start=${start}">删除</a>
+            </td>
+          </c:if>
           <c:if test="${order.type=='乒乓球台'}">
             <td>
-              <a class="edit" href="javascript:;">详情</a>&nbsp;
+              <%--<a class="edit" href="javascript:;">详情</a>&nbsp;--%>
               <a class="delete" href="<%=basePath%>pingpang/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=home&start=${start}">删除</a>
             </td>
           </c:if>
+        </c:if>
+        <c:if test="${order.iscomplete != '1'}">
+          <td>
+            请到相应页面操作此订单
+          </td>
+        </c:if>
           <!-- <td>
             <a class="edit" href="javascript:;">详情</a>&nbsp;
             <a class="delete" href="<%=basePath%>basketball/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=home">删除</a>

@@ -328,6 +328,19 @@ public interface BadmintonDao {
                           @Param(value = "page_size") int page_size);
 
     /**
+     * 获取符合条件的用户数
+     * @param userName 用户名
+     * @param phone 的话
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 符合条件的用户
+     */
+    int getAllUserCount(@Param(value = "name") String userName, @Param(value = "phone") String phone,
+                               @Param(value = "week")int week, @Param(value = "start_time")double start_time,
+                               @Param(value = "end_time") double end_time);
+
+    /**
      * 增加常驻用户
      * @param userName 用户名
      * @param phone 联系方式
@@ -364,6 +377,18 @@ public interface BadmintonDao {
      * @param id 订单id
      * @return
      */
-    void deleteOrder(int id);
+    void deleteOrder(@Param(value = "id") int id);
+
+    /**
+     * 未完成订单确认完成
+     * @param id 订单id
+     */
+    void completeOrder(@Param(value = "id") int id);
+
+    /**
+     * 未支付订单确认支付
+     * @param id 订单id
+     */
+    void payOrder(@Param(value = "id") int id);
 
 }

@@ -83,19 +83,22 @@
         <td>${order.start_time}--${order.end_time}</td>
         <c:if test="${order.type=='篮球场'}">
           <td>
-            <a class="edit" href="javascript:;">详情</a>&nbsp;
+            <%--<a class="edit" href="javascript:;">详情</a>&nbsp;--%>
+            <a class="pay" href="<%=basePath%>basketball/payOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&start=${start}">确认支付</a>
             <a class="delete" href="<%=basePath%>basketball/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=nopay&start=${start}">删除</a>
           </td>
         </c:if>
         <c:if test="${order.type=='羽毛球场'}">
           <td>
-            <a class="edit" href="javascript:;">详情</a>&nbsp;
+            <%--<a class="edit" href="javascript:;">详情</a>&nbsp;--%>
+            <a class="pay" href="<%=basePath%>badminton/payOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&start=${start}">确认支付</a>
             <a class="delete" href="<%=basePath%>badminton/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=nopay&start=${start}">删除</a>
           </td>
         </c:if>
         <c:if test="${order.type=='乒乓球台'}">
           <td>
-            <a class="edit" href="javascript:;">详情</a>&nbsp;
+            <%--<a class="edit" href="javascript:;">详情</a>&nbsp;--%>
+            <a class="pay" href="<%=basePath%>pingpang/payOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&start=${start}">确认支付</a>
             <a class="delete" href="<%=basePath%>pingpang/deleteOrder?id=${order.id}&stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&from=nopay&start=${start}">删除</a>
           </td>
         </c:if>

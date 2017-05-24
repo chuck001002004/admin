@@ -560,4 +560,16 @@
         DELETE FROM tb_pingpang WHERE id = #{id}
     </delete>
 
+    <update id="completeOrder">
+        UPDATE tb_pingpang
+        SET iscomplete = '1'
+        WHERE id = #{id}
+    </update>
+
+    <update id="payOrder">
+        UPDATE tb_pingpang
+        SET ispay = '1'
+        WHERE id = #{id}
+    </update>
+
 </mapper>

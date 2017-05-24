@@ -41,21 +41,30 @@ public class UserController {
     public String getAllUser(int stadium, String userName, String phone, int week, double start_time,
                              double end_time, int start, Map<String, Object> map){
 //        System.out.println(stadium + "  " + userName + "  " + phone + "  " + week + "  " + start_time + "  " + end_time);
+        map.put("stadium", stadium);
+        map.put("userName", (userName == null || userName.equals("")) ? "" : userName);
+        map.put("phone", (phone == null || phone.equals("")) ? "" : phone);
+        map.put("week", week);
+        map.put("start_time", start_time);
+        map.put("end_time", end_time);
         map.put("start", start);
+        int order_count = 0;
         start = (start - 1) * PAGE_SIZE;
         List<User> list = null;
         if(stadium == 0){
+            order_count = userService.getAllUserCount(userName, phone, week, start_time, end_time);
             list = userService.getAllUser(userName, phone, week, start_time, end_time, start, PAGE_SIZE);
         }else if(stadium == 1){
+            order_count = basketballService.getAllUserCount(userName, phone, week, start_time, end_time);
             list = basketballService.getAllUser(userName, phone, week, start_time, end_time, start, PAGE_SIZE);
         }else{
+            order_count = badmintonService.getAllUserCount(userName, phone, week, start_time, end_time);
             list = badmintonService.getAllUser(userName, phone, week, start_time, end_time, start, PAGE_SIZE);
         }
-        int order_count = list == null ? 0 : list.size();
-        int count = (int) Math.ceil(order_count / PAGE_SIZE);
+        int count = (int) Math.ceil((double)order_count / (double)PAGE_SIZE);
         map.put("list", list);
         map.put("page_count", count);
-        map.put("order_count", order_count);
+        map.put("cnt", list == null ? 0 : list.size());
 //        for(User o : list){
 //            System.out.println(o);
 //        }
@@ -98,7 +107,7 @@ public class UserController {
      */
     @RequestMapping(value = "/getUserById")
     public String getUserById(int id, int type, Map<String, Object> map){
-        System.out.println(id + "  " + type);
+//        System.out.println(id + "  " + type);
         if(type == 1){
             map.put("user", basketballService.getUserById(id));
         }else{
@@ -115,7 +124,7 @@ public class UserController {
      */
     @RequestMapping(value = "/deleteUserById")
     public String deleteUserById(int id, int type){
-        System.out.println(id + "  " + type);
+//        System.out.println(id + "  " + type);
         if(type == 1){
             System.out.println("delete basketball");
             basketballService.deleteUserById(id);

@@ -108,16 +108,10 @@
       </c:forEach>
     </tbody>
   </table>
-  <div class="row">
-    <div class="row-left">
-      <div class="dataTables_info">共6条记录</div>
-    </div>
-    <div class="row-right">
-      <ul>
-        <li class="active"><a href="">1</a></li><li><a href="">2</a></li>
-      </ul>
-    </div>
+  <div style="float:left">
+    共${cnt}条记录
   </div>
+  <div style="float:right">第<select name="page" id="page"><option value="0">--</option></select>页</div>
 </div>
 <script src="<%=basePath%>common/js/user.js"></script>
 <script type="text/javascript" src="<%=basePath%>common/js/jquery-1.12.3.min.js"></script>
@@ -135,7 +129,35 @@
   });
 
 </script>
+<script type="text/javascript">
+  //分页下拉框模块
+  $(function(){
 
+    //构建下拉框
+    pageSelect();
+
+    //分页下拉框函数
+    function pageSelect(){
+      var str = "";
+      var i = 1;
+      for(i = 1; i <= ${page_count}; i++){
+        if(i == ${start}){
+          str += "<option value='" + i + "' selected='selected'>" + i + "</option>";
+        }else{
+          str += "<option value='" + i + "'>" + i + "</option>";
+        }
+      }
+      $("#page").html(str);
+    }
+
+    //页面跳转
+    $("#page").change(function(){
+      var start = $("#page").val();
+      window.location.href="<%=basePath%>user/getAllUser?stadium=${stadium}&userName=${userName}&phone=${phone}&week=${week}&start_time=${start_time}&end_time=${end_time}&start="+start;
+    });
+
+  });
+</script>
 <div style="display:none"></div>
 </body>
 </html>

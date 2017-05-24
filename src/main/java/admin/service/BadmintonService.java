@@ -360,6 +360,20 @@ public class BadmintonService {
     }
 
     /**
+     * 获取符合条件的用户数
+     * @param userName 用户名
+     * @param phone 的话
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 符合条件的用户
+     */
+    public int getAllUserCount(String userName, String phone, int week, double start_time,
+                                 double end_time){
+        return badmintonDao.getAllUserCount(userName, phone, week, start_time, end_time);
+    }
+
+    /**
      * 增加常驻用户
      * @param userName 用户名
      * @param phone 联系方式
@@ -403,6 +417,22 @@ public class BadmintonService {
      */
     public void deleteOrder(int id){
         badmintonDao.deleteOrder(id);
+    }
+
+    /**
+     * 未完成订单确认完成
+     * @param id 订单id
+     */
+    public void completeOrder(int id){
+        badmintonDao.completeOrder(id);
+    }
+
+    /**
+     * 未支付订单确认支付
+     * @param id 订单id
+     */
+    public void payOrder(int id){
+        badmintonDao.payOrder(id);
     }
 
 }

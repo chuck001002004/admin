@@ -322,10 +322,25 @@ public class PingpangService {
     /**
      * 删除订单
      * @param id 订单id
-     * @return
      */
     public void deleteOrder(int id){
         pingpangDao.deleteOrder(id);
+    }
+
+    /**
+     * 未完成订单确认完成
+     * @param id 订单id
+     */
+    public void completeOrder(int id){
+        pingpangDao.completeOrder(id);
+    }
+
+    /**
+     * 未支付订单确认支付
+     * @param id 订单id
+     */
+    public void payOrder(int id){
+        pingpangDao.payOrder(id);
     }
 
 }

@@ -292,8 +292,19 @@ public interface PingpangDao {
     /**
      * 删除订单
      * @param id 订单id
-     * @return
      */
-    void deleteOrder(int id);
+    void deleteOrder(@Param(value = "id") int id);
+
+    /**
+     * 未完成订单确认完成
+     * @param id 订单id
+     */
+    void completeOrder(@Param(value = "id") int id);
+
+    /**
+     * 未支付订单确认支付
+     * @param id 订单id
+     */
+    void payOrder(@Param(value = "id") int id);
 
 }
