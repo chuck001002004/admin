@@ -31,6 +31,20 @@ public class BasketballController {
     }
 
     /**
+     * 实时查看篮球场剩余情况(针对长期用户预约功能)
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 同时段被其他长期用户占用的场地号
+     */
+    @RequestMapping(value = "/getUnbookedSiteByLong")
+    @ResponseBody
+    public String getUnbookedSiteByLong(int week, double start_time, double end_time){
+//        System.out.println(basketballService.getUnbookedSiteByLong(week, start_time, end_time));
+        return basketballService.getUnbookedSiteByLong(week, start_time, end_time);
+    }
+
+    /**
      * 删除订单
      * @param id 订单id
      * @param from 来自页面

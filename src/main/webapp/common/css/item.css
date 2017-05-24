@@ -68,7 +68,7 @@
     font-size: 16px;
     text-align: center;
 }
-.space{
+#space{
 	clear: both;
 }
 #info-ground .hint-info{
@@ -82,7 +82,7 @@
     background-repeat:no-repeat;
     background-size: cover;
     float: left;
-    width: 150px;
+    width: 14%;
     height: 240px;
     margin-right: 20px;
 }
@@ -101,4 +101,7 @@
 #info-badmin .badminton input{
   /* width: 0.18rem;
    height: 0.18rem;*/
+}
+.info-textarea{
+	clear: both;
 }

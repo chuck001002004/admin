@@ -40,7 +40,7 @@
 <body>
 <div id="content">
   <div id="search">
-    <form action="<%=basePath%>user/getAllUser" method="">
+    <form action="<%=basePath%>user/getAllUser" method="post">
       <input type="hidden" value="1" name="start">
       <p class="info-list">场地类型：
         <input type="radio" name="stadium" value="1" />篮球馆

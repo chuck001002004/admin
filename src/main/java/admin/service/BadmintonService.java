@@ -344,6 +344,23 @@ public class BadmintonService {
     }
 
     /**
+     * 实时查看羽毛球场剩余情况(针对长期用户预约功能)
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @return 同时段被其他长期用户占用的场地号
+     */
+    public String getUnbookedSiteByLong(int week, double start_time, double end_time){
+        List<String> list = badmintonDao.getBookedSiteByLong(week, start_time, end_time);
+        String res = "";
+        for(String s : list){
+            res += s + ",";
+        }
+        res = res.lastIndexOf(',') == -1 ? res : res.substring(0, res.lastIndexOf(','));
+        return res;
+    }
+
+    /**
      * 获取符合条件的用户
      * @param userName 用户名
      * @param phone 的话

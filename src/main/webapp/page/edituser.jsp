@@ -31,13 +31,13 @@
   <div id="search">
     <form action="<%=basePath%>user/addUser" method="post" id="form-submit">
       <p class="info-list">
-        用户名：<input type="text" name="userName" placeholder="请输入用户名" value="">
+        用户名：<input type="text" name="userName" placeholder="请输入用户名" value="${user.name}">
       </p>
       <p class="info-list">
-        手机号：<input type="text" name="phone" placeholder="请输入用户手机号" value="">
+        手机号：<input type="text" name="phone" placeholder="请输入用户手机号" value="${user.phone}">
       </p>
       <p class="info-list">
-        紧急联系人手机号：<input type="text" name="emergencycall" placeholder="请输入紧急联系人手机号" value="">
+        紧急联系人手机号：<input type="text" name="emergencycall" placeholder="请输入紧急联系人手机号" value="${user.emergencycall}">
       </p>
       <p class="info-list">星期选择：
         <select name="week" id="week">
@@ -58,14 +58,19 @@
         </select>
       </p>
       <p class="info-list">
-        家庭住址：<input type="text" name="address" placeholder="请输入用户住址" value="">
+        家庭住址：<input type="text" name="address" placeholder="请输入用户住址" value="${user.address}">
       </p>
       <p class="info-list">
-        金额：<input type="text" name="money" id="money" placeholder="请输入所需的费用" value="">
+        金额：<input type="text" name="money" id="money" placeholder="请输入所需的费用" value="${user.money}">
       </p>
-      <p class="info-list">场地类型：
-        <input type="radio" name="item" value="0" />篮球馆
-        <input type="radio" name="item" value="1"/>羽毛球馆
+      <p class="info-list">
+        当前场地：${user.site_no}号${user.type}
+      </p>
+      <p class="info-list">修改当前场地：
+          <input type="radio" name="item" value="0" id="item1"/>篮球馆
+          <input type="radio" name="item" value="1" id="item2"/>羽毛球馆
+      </p>
+      <p class="info-list">
       </p>
       <div id="info-ground">
         <div class="basketball active">
@@ -122,11 +127,32 @@
 <script type="text/javascript">
   $(function(){
 
-    //获取星期几 Sun - Sat ==> 0-6
-//    function getWeek(date){
-//      var d = date.split("-");
-//      return new Date(d[0], parseInt(d[1]) - 1, d[2]).getDay();
-//    }
+    function init(){
+      //初始化星期
+      var week = $("#week option");
+      var i = 0;
+      for(i = 0; i < week.length; i++){
+        if(week[i].value == ${user.week}){
+          week[i].selected = true;
+        }
+      }
+      //初始化开始时间
+      var start_time = $("#select-time option");
+      for(i = 0; i < start_time.length; i++){
+        if(start_time[i].value == ${user.st}){
+          start_time[i].selected = true;
+        }
+      }
+      //初始化结束时间
+      var end_time = $("#select-time2 option");
+      for(i = 0; i < end_time.length; i++){
+        if(end_time[i].value == ${user.et}){
+          end_time[i].selected = true;
+        }
+      }
+    }
+
+
 
     //所有篮球场地checkbox可选
     function ableAllCheckbox(){
@@ -209,66 +235,68 @@
       }
     }
 
+    init();
+
   });
 </script>
 </html>
 <!--
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-  <meta name="renderer" content="webkit|ie-comp|ie-stand">
-  <meta name="keywords" content="scclui框架">
-  <meta name="description" content="scclui为轻量级的网站后台管理系统模版。">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="stylesheet" href="../common/css/home.css">
-  <title>首页</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="keywords" content="scclui框架">
+<meta name="description" content="scclui为轻量级的网站后台管理系统模版。">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" href="../common/css/home.css">
+<title>首页</title>
 </head>
 
 <body>
 <div id="content">
-  <div id="search">
-    <form action="<%=basePath%>user/addUser" method="post">
-      <p class="info-list">场地类型：<input type="radio" name="stadium" value="0" />篮球馆<input type="radio" name="stadium" value="1"/>羽毛球馆
-      <p class="info-list">
-        用户名：<input type="text" name="userName" placeholder="请输入用户名" value="">
-      </p>
-      <p class="info-list">
-        联系方式：<input type="text" name="phone" placeholder="请输入联系方式" value="">
-      </p>
-      <p class="info-list">
-        紧急联系方式：<input type="text" name="emergencycall" placeholder="请输入紧急联系方式" value="">
-      </p>
-      <p class="info-list">星期选择：<select name="week" id="week">
-        <option value="1">星期一</option>
-        <option value="2">星期二</option>
-        <option value="3">星期三</option>
-        <option value="4">星期四</option>
-        <option value="5">星期五</option>
-        <option value="6">星期六</option>
-        <option value="7">星期天</option>
+<div id="search">
+<form action="<%=basePath%>user/addUser" method="post">
+<p class="info-list">场地类型：<input type="radio" name="stadium" value="0" />篮球馆<input type="radio" name="stadium" value="1"/>羽毛球馆
+<p class="info-list">
+用户名：<input type="text" name="userName" placeholder="请输入用户名" value="">
+</p>
+<p class="info-list">
+联系方式：<input type="text" name="phone" placeholder="请输入联系方式" value="">
+</p>
+<p class="info-list">
+紧急联系方式：<input type="text" name="emergencycall" placeholder="请输入紧急联系方式" value="">
+</p>
+<p class="info-list">星期选择：<select name="week" id="week">
+<option value="1">星期一</option>
+<option value="2">星期二</option>
+<option value="3">星期三</option>
+<option value="4">星期四</option>
+<option value="5">星期五</option>
+<option value="6">星期六</option>
+<option value="7">星期天</option>
 
-      </select></p>
-      <p class="info-list">
-        预约时段：<select name="start_time" id="select-time">
-      </select>
-        <span>--</span>
-        <select name="end_time" id="select-time2">
-        </select>
-      </p>
-      <p class="info-list">
-        联系地址：<input type="text" name="address" placeholder="请输入联系地址" value="">
-      </p>
-      <p class="info-list">
-        金额：<input type="text" name="money" placeholder="请输入所需的费用" value="">
-      </p>
-      <p class="info-textarea">
-        <span>备注：</span></br><textarea name="remark" rows="10"></textarea>
-      </p>
-      <p class="sub"><input  type="submit" value="添加"></p>
-    </form>
-  </div>
+</select></p>
+<p class="info-list">
+预约时段：<select name="start_time" id="select-time">
+</select>
+<span>--</span>
+<select name="end_time" id="select-time2">
+</select>
+</p>
+<p class="info-list">
+联系地址：<input type="text" name="address" placeholder="请输入联系地址" value="">
+</p>
+<p class="info-list">
+金额：<input type="text" name="money" placeholder="请输入所需的费用" value="">
+</p>
+<p class="info-textarea">
+<span>备注：</span></br><textarea name="remark" rows="10"></textarea>
+</p>
+<p class="sub"><input  type="submit" value="添加"></p>
+</form>
+</div>
 </div>
 
 <script src="../common/js/jquery-1.12.3.min.js"></script>

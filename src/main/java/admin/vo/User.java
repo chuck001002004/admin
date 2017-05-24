@@ -17,6 +17,33 @@ public class User {
     String type;    //场地类型
     String address; //地址
     String remark;  //备注
+    int money;
+    double st;
+    double et;
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public double getSt() {
+        return st;
+    }
+
+    public void setSt(double st) {
+        this.st = st;
+    }
+
+    public double getEt() {
+        return et;
+    }
+
+    public void setEt(double et) {
+        this.et = et;
+    }
 
     public String getAddress() {
         return address;
@@ -88,6 +115,7 @@ public class User {
     }
 
     public void setStart_time(double start_time) {
+        this.setSt(start_time);
         int start_hour = (int) Math.floor(start_time);
         int start_minute = (int) ((start_time - start_hour) * 60);
         this.start_time = start_hour + ":" + (start_minute == 0 ? "00" : start_minute);
@@ -98,6 +126,7 @@ public class User {
     }
 
     public void setEnd_time(double end_time) {
+        this.setEt(end_time);
         int end_hour = (int) Math.floor(end_time);
         int end_minute = (int) ((end_time - end_hour) * 60);
         this.end_time = end_hour + ":" + (end_minute == 0 ? "00" : end_minute);
@@ -125,6 +154,9 @@ public class User {
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
                 ", remark='" + remark + '\'' +
+                ", money=" + money +
+                ", st=" + st +
+                ", et=" + et +
                 '}';
     }
 
