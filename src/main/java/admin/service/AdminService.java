@@ -24,4 +24,13 @@ public class AdminService {
         return adminDao.adminLogin(userName, password);
     }
 
+    /**
+     * 添加登录记录
+     * @param adminid 管理员id
+     * @param login_ip 登录ip
+     */
+    public void addLog(int adminid, String login_ip){
+        adminDao.addLog(adminid, login_ip);
+    }
+
 }

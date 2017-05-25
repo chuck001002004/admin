@@ -10,4 +10,10 @@
                 WHERE username = #{username} AND password = #{password}
         </select>
 
+        <insert id="addLog">
+                INSERT INTO tb_admin_login_log (adminid, login_time, login_ip)
+                VALUES
+                (#{adminid}, now(), #{login_ip})
+        </insert>
+
 </mapper>

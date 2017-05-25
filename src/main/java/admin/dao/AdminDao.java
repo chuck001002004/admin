@@ -18,4 +18,11 @@ public interface AdminDao {
      */
     Admin adminLogin(@Param(value = "username")String userName, @Param(value = "password")String password);
 
+    /**
+     * 添加登录记录
+     * @param adminid 管理员id
+     * @param login_ip 登录ip
+     */
+    void addLog(@Param(value = "adminid") int adminid, @Param(value = "login_ip") String login_ip);
+
 }
