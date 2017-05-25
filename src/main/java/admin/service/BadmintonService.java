@@ -452,4 +452,24 @@ public class BadmintonService {
         badmintonDao.payOrder(id);
     }
 
+    /**
+     * 更新常驻用户信息
+     * @param id 用户id
+     * @param userName 用户名
+     * @param phone 电话
+     * @param emergencycall 紧急联系方式
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param address 联系地址
+     * @param money 金额
+     * @param badminton 场地号
+     * @param remark 备注
+     */
+    public void updateUser(int id, String userName, String phone, String emergencycall,
+                           int week, double start_time, double end_time, String address,
+                           String money, String badminton, String remark){
+        badmintonDao.updateUser(id, userName, phone, emergencycall, week, start_time, end_time, address, money, badminton, remark);
+    }
+
 }

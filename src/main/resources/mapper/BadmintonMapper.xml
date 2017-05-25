@@ -671,4 +671,11 @@
         WHERE id = #{id}
     </update>
 
+    <update id="updateUser">
+        UPDATE tb_badminton_long
+        SET name = #{name}, phone = #{phone}, emergencycall = #{emergencycall}, week = #{week}, start_time = #{start_time},
+        end_time = #{end_time}, site_no = #{site_no}, address = #{address}, remark = #{remark}, money = #{money}
+        WHERE id = #{id}
+    </update>
+
 </mapper>

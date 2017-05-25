@@ -165,7 +165,15 @@ public class UserController {
                              int week, double start_time, double end_time, String address,
                              String money, @RequestParam(required = false) String stadium,
                              @RequestParam(required = false) String badminton, String remark){
-        return "";
+        System.out.println(id + "  " + item + "  " + userName + "  " + phone + "  " + emergencycall + "  "
+                + week + "  " + start_time + "  " + end_time + "  " + address + "  " + money + "  " + stadium + "  " + badminton
+                + "  " + remark);
+        if(item == 0){
+            basketballService.updateUser(id, userName, phone, emergencycall, week, start_time, end_time, address, money, stadium,remark);
+        }else{
+            badmintonService.updateUser(id, userName, phone, emergencycall, week, start_time, end_time, address, money, badminton, remark);
+        }
+        return "redirect:/user/getAllUser?stadium=0&week=7&start_time=0&end_time=0&start=1";
     }
 
 }

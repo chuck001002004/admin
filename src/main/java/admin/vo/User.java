@@ -17,9 +17,9 @@ public class User {
     String type;    //场地类型
     String address; //地址
     String remark;  //备注
-    int money;
-    double st;
-    double et;
+    int money;  //金额
+    double st;  //开始时间double类型
+    double et;  //结束时间double类型
 
     public int getMoney() {
         return money;

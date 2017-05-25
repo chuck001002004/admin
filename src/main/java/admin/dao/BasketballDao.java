@@ -395,4 +395,24 @@ public interface BasketballDao {
      */
     void payOrder(@Param(value = "id") int id);
 
+    /**
+     * 更新常驻用户
+     * @param id 用户id
+     * @param userName 用户名
+     * @param phone 电话
+     * @param emergencycall 紧急联系方式
+     * @param week 星期几
+     * @param start_time 开始时间
+     * @param end_time 结束时间
+     * @param address 联系地址
+     * @param money 金额
+     * @param stadium 场地号
+     * @param remark 备注
+     */
+    void updateUser(@Param(value = "id") int id, @Param(value = "name") String userName, @Param(value = "phone") String phone,
+                    @Param(value = "emergencycall")String emergencycall, @Param(value = "week")int week,
+                    @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
+                    @Param(value = "address") String address, @Param(value = "money") String money,
+                    @Param(value = "site_no") String stadium, @Param(value = "site_type")String site_type,@Param(value = "remark") String remark);
+
 }

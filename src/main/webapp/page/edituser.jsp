@@ -29,7 +29,12 @@
 <body>
 <div id="content">
   <div id="search">
-    <form action="<%=basePath%>user/addUser" method="post" id="form-submit">
+    <c:if test="${user.type == '篮球场'}">
+      <form action="<%=basePath%>user/updateUser?id=${user.id}&item=0&stadium=${user.site_no}" method="post" id="form-submit">
+    </c:if>
+    <c:if test="${user.type == '羽毛球场'}">
+      <form action="<%=basePath%>user/updateUser?id=${user.id}&item=1&badminton=${user.site_no}" method="post" id="form-submit">
+    </c:if>
       <p class="info-list">
         用户名：<input type="text" name="userName" placeholder="请输入用户名" value="${user.name}">
       </p>
@@ -112,21 +117,22 @@
         </div>
       </div>
       <p class="info-textarea" id="info-textarea">
-        <span>备注：</span></br><textarea name="remark" rows="10"></textarea>
+        <span>备注：</span></br><textarea name="remark" rows="10">${user.remark}</textarea>
       </p>
-      <p class="sub"><input  type="submit" value="添加"></p>
+      <p class="sub"><input  type="submit" value="修改"></p>
     </form>
   </div>
 </div>
 
 <script src="../common/js/jquery-1.12.3.min.js"></script>
 <script src="../common/js/bootstrap.min.js"></script>
-<script src="../common/js/checkUser.js"></script>
+<script src="../common/js/edituser.js"></script>
 <script src="../common/js/addItem.js"></script>
 </body>
 <script type="text/javascript">
   $(function(){
 
+    //初始化填入用户信息
     function init(){
       //初始化星期
       var week = $("#week option");
@@ -152,7 +158,41 @@
       }
     }
 
+    //篮球场地被重选
+    $("input[name='stadium']").change(function(){
+      var s = $("input[name='stadium']:checked");
+//      var i = 0;
+//      var site = "";
+//      for(i = 0; i < s.length - 1; i++){
+//        site += s[i].value + ",";
+//      }
+//      if(s.length != 0){
+//        site += s[i].value;
+//      }
+      if(s.length != 0){
+        $("#form-submit").attr("action", "<%=basePath%>user/updateUser?id=${user.id}&item=0");
+      }else{
+        $("#form-submit").attr("action", "<%=basePath%>user/updateUser?id=${user.id}&item=0&stadium=${user.site_no}");
+      }
+    });
 
+    //羽毛球场地被重选
+    $("input[name='badminton']").change(function(){
+      var s = $("input[name='badminton']:checked");
+//      var i = 0;
+//      var site = "";
+//      for(i = 0; i < s.length - 1; i++){
+//        site += s[i].value + ",";
+//      }
+//      if(s.length != 0){
+//        site += s[i].value;
+//      }
+      if(s.length != 0){
+        $("#form-submit").attr("action", "<%=basePath%>user/updateUser?id=${user.id}&item=1");
+      }else{
+        $("#form-submit").attr("action", "<%=basePath%>user/updateUser?id=${user.id}&item=1&badminton=${user.site_no}");
+      }
+    });
 
     //所有篮球场地checkbox可选
     function ableAllCheckbox(){
