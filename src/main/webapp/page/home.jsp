@@ -59,10 +59,13 @@
         </select>
       </p>
       <input type="hidden" value="1" name="start">
-      <p class="sub"><input  type="submit" value="查询"></p>
+      <p class="sub">
+        <input  type="submit" value="查询">
+        <input  type="button" value="刷新" onclick="window.location.href='<%=basePath%>order/getAllOrder?stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&start=1'">
+      </p>
     </form>
-
   </div>
+
   <div id="sch-result">
     <table class="am-table">
       <thead>

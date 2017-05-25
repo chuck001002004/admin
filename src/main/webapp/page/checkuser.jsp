@@ -70,7 +70,10 @@
           <option value="0" selected="selected">请选择</option>
         </select>
       </p>
-      <p class="sub"><input  type="submit" value="查询"></p>
+      <p class="sub">
+        <input  type="submit" value="查询">
+        <input  type="button" value="刷新" onclick="window.location.href='<%=basePath%>user/getAllUser?stadium=${stadium}&userName=${userName}&phone=${phone}&week=${week}&start_time=${start_time}&end_time=${end_time}&start=1'">
+      </p>
     </form>
   </div>
   <table class="am-table">

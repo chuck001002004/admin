@@ -63,7 +63,10 @@
           <option value="0" selected="selected">结束</option>
         </select>
       </p>
-      <p class="sub"><input  type="submit" value="查询"></p>
+      <p class="sub">
+        <input  type="submit" value="查询">
+        <input  type="button" value="刷新" onclick="window.location.href='<%=basePath%>order/getAllIncompleteOrder?stadium=${stadium}&wechat=${wechat}&userName=${userName}&phone=${phone}&date=${date}&start_time=${start_time}&end_time=${end_time}&start=1'">
+      </p>
     </form>
   </div>
   <table class="am-table">

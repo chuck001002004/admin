@@ -119,7 +119,8 @@
       <p class="info-textarea" id="info-textarea">
         <span>备注：</span></br><textarea name="remark" rows="10">${user.remark}</textarea>
       </p>
-      <p class="sub"><input  type="submit" value="修改"></p>
+      <p class="sub"><input  type="submit" value="修改"><input  type="button" value="返回" onclick="window.history.back(-1);"></p>
+      <%--<p class="sub"></p>--%>
     </form>
   </div>
 </div>
