@@ -8,7 +8,7 @@
         SELECT a.*, b.name
         FROM
         (
-            SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, site_no, alias
+            SELECT id, userid, date, '篮球场' type, start_time, end_time, ispay, iscomplete, site_no, alias
             FROM tb_basketball
             <where>
                 <if test="date != null and date != ''">
