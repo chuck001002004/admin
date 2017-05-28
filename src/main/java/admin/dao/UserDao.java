@@ -37,7 +37,7 @@ public interface UserDao {
      * @param end_time 结束时间
      * @return 符合条件的用户
      */
-    public int getAllUserCount(@Param(value = "name") String userName, @Param(value = "phone") String phone,
+    int getAllUserCount(@Param(value = "name") String userName, @Param(value = "phone") String phone,
                                @Param(value = "week")int week, @Param(value = "start_time")double start_time,
                                @Param(value = "end_time") double end_time);
 

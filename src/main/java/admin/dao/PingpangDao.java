@@ -71,21 +71,6 @@ public interface PingpangDao {
                                  @Param(value = "end_time") double end_time);
 
     /**
-     * 获取所有已完成订单记录
-     * @param userName 用户名
-     * @param phone 电话
-     * @param date 预约日期
-     * @param start_time 开始时间
-     * @param end_time 结束时间
-     * @param start 开始记录数
-     * @param page_size 记录条数
-     * @return 所有已完成的订单
-     */
-//    List<Order> getAllCompleteOrder(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
-//                                    @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
-//                                    @Param(value = "start") int start, @Param(value = "page_size") int page_size);
-
-    /**
      * 获取所有已完成微信预约订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -140,21 +125,6 @@ public interface PingpangDao {
                                                 @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
-     * 获取所有未完成订单记录
-     * @param userName 用户名
-     * @param phone 电话
-     * @param date 预约日期
-     * @param start_time 开始时间
-     * @param end_time 结束时间
-     * @param start 开始记录数
-     * @param page_size 记录条数
-     * @return 所有未完成的订单
-     */
-//    List<Order> getAllIncompleteOrder(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
-//                                      @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
-//                                      @Param(value = "start") int start, @Param(value = "page_size") int page_size);
-
-    /**
      * 获取所有未完成微信预约订单记录
      * @param userName 用户名
      * @param phone 电话
@@ -178,7 +148,7 @@ public interface PingpangDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllInCompleteOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllInCompleteOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                                   @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
@@ -207,21 +177,6 @@ public interface PingpangDao {
      */
     public int getAllInCompleteOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                                   @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
-
-    /**
-     * 获取所有未完成订单记录
-     * @param userName 用户名
-     * @param phone 电话
-     * @param date 预约日期
-     * @param start_time 开始时间
-     * @param end_time 结束时间
-     * @param start 开始记录数
-     * @param page_size 记录条数
-     * @return 所有未完成的订单
-     */
-//    List<Order> getAllUnpayOrder(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
-//                                 @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time,
-//                                 @Param(value = "start") int start, @Param(value = "page_size") int page_size);
 
     /**
      * 获取所有未支付微信预约订单记录

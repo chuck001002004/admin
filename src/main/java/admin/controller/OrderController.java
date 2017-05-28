@@ -103,9 +103,6 @@ public class OrderController {
         map.put("list", list);
         map.put("page_count", count);
         map.put("cnt", list == null ? 0 : list.size());
-//        for(Order o : list){
-//            System.out.println(o);
-//        }
         return "home";
     }
 
@@ -177,9 +174,6 @@ public class OrderController {
         map.put("list", list);
         map.put("page_count", count);
         map.put("cnt", list == null ? 0 : list.size());
-//        for(Order o : list){
-//            System.out.println(o);
-//        }
         return "finished";
     }
 
@@ -251,9 +245,6 @@ public class OrderController {
         map.put("list", list);
         map.put("page_count", count);
         map.put("cnt", list == null ? 0 : list.size());
-//        for(Order o : list){
-//            System.out.println(o);
-//        }
         return "nofinished";
     }
 
@@ -274,8 +265,6 @@ public class OrderController {
     @RequestMapping(value = "/getAllUnpayOrder")
     public String getAllUnpayOrder(int stadium, int wechat, String userName, String phone, String date,
                                    double start_time, double end_time, int start, Map<String, Object> map){
-//        System.out.println(stadium + "  " + wechat + "  " + userName + "  " + phone + "  " + date + "  " + start_time +
-//                "  " + end_time + "  " + start);
         map.put("stadium", stadium);
         map.put("wechat", wechat);
         map.put("userName", (userName == null || userName.equals("")) ? "" : userName);
@@ -327,9 +316,6 @@ public class OrderController {
         map.put("list", list);
         map.put("page_count", count);
         map.put("cnt", list == null ? 0 : list.size());
-//        for(Order o : list){
-//            System.out.println(o);
-//        }
         return "nopay";
     }
 
@@ -347,8 +333,6 @@ public class OrderController {
     @RequestMapping(value = "/addOrder")
     public String addOrder(String userName, String phone, String date, double start_time,
                            double end_time, int item, @RequestParam(required = false) String stadium){
-//        System.out.println(userName + "  " + phone + "  " + date + "  " + start_time + "  "
-//                + end_time + "  " + item + "  " + stadium);
         if(item == 0){
             basketballService.addOrder(userName, phone, date, start_time, end_time, stadium.length() == 1 ? "0" : "1", stadium);
         }else if(item == 1){

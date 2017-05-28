@@ -104,7 +104,6 @@
     </form>
   </div>
 </div>
-<%--<script type="text/javascript" src="<%=basePath%>common/lib/jquery-1.9.0.min.js"></script>--%>
 <script type="text/javascript" src="<%=basePath%>common/lib/jquery-1.12.3.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>common/js/sccl.js"></script>
 <script type="text/javascript" src="<%=basePath%>common/js/sccl-util.js"></script>
@@ -113,7 +112,6 @@
 </body>
 <script type="text/javascript">
   $("#yanzheng").click(function(){
-    <%--$.get("<%=basePath%>admin/checkBeforeUpdate", {id : ${admin.id}, "password" : $("#oldpassword").val()}), function(data){alert(data);}--%>
     var pwd = $("#oldpassword").val();
     $.ajax({
       type: "GET",

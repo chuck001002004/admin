@@ -59,8 +59,6 @@ public class BadmintonController {
     @RequestMapping(value = "/deleteOrder")
     public String deleteOrder(int id, String from, int stadium, int wechat, String userName, String phone,
                               String date, double start_time, double end_time, int start){
-//        System.out.println(id + "  " + from + "  " + stadium + "  " + wechat + " " + userName + "  " +
-//        "  " + phone + "  " + date + "  " + start_time + "  " + end_time + " " + start);
         badmintonService.deleteOrder(id);
         return from.equals("home") ? "redirect:/order/getAllOrder?stadium=" + stadium + "&wechat=" + wechat + "&userName=" + userName +
                 "&phone=" + phone + "&date=" + date + "&start_time=" + start_time + "&end_time=" + end_time + "&start=" + start :

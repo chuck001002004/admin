@@ -24,7 +24,7 @@ public interface OrderDao {
      * 获取所有订单记录数
      * @return 所有的订单
      */
-    public int getAllOrderCount();
+    int getAllOrderCount();
 
     /**
      * 获取微信预约的所有订单
@@ -51,7 +51,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone,
+    int getAllOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone,
                                         @Param(value = "date") String date, @Param(value = "start_time") double start_time,
                                         @Param(value = "end_time") double end_time);
 
@@ -80,7 +80,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone,
+    int getAllOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone,
                                         @Param(value = "date") String date, @Param(value = "start_time") double start_time,
                                         @Param(value = "end_time") double end_time);
 
@@ -108,7 +108,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return 所有已完成的订单
      */
-    public int getAllCompleteOrderCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllCompleteOrderCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                                 @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
@@ -135,7 +135,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllCompleteOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllCompleteOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                                 @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
@@ -162,7 +162,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllCompleteOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllCompleteOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                                 @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
@@ -216,7 +216,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllIncompleteOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllIncompleteOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                                   @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
@@ -243,7 +243,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllIncompleteOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllIncompleteOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                                   @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
@@ -270,7 +270,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllUnpayOrderCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllUnpayOrderCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                      @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
@@ -297,7 +297,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllUnpayOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllUnpayOrderByWechatCount(@Param(value = "name") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                              @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
     /**
@@ -324,7 +324,7 @@ public interface OrderDao {
      * @param end_time 结束时间
      * @return
      */
-    public int getAllUnpayOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
+    int getAllUnpayOrderUnwechatCount(@Param(value = "alias") String userName, @Param(value = "phone") String phone, @Param(value = "date")String date,
                                              @Param(value = "start_time") double start_time, @Param(value = "end_time") double end_time);
 
 }

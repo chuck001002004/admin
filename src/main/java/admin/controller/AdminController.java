@@ -126,7 +126,6 @@ public class AdminController {
     @RequestMapping(value = "/checkBeforeUpdate", produces = {"plain/html;charset=UTF-8"})
     @ResponseBody
     public String checkBeforeUpdate(String id, String password){
-//        System.out.println(adminService.checkBeforeUpdate(id, password));
         if(adminService.checkBeforeUpdate(id, password) > 0){
             return "1";
         }
@@ -142,7 +141,6 @@ public class AdminController {
      */
     @RequestMapping(value = "/updateAdminInfo")
     public String updateAdminInfo(String id, String username, String password, Map<String, Object> map){
-//        System.out.println(id + "  " + username + "  " + password);
         if(password != null && !password.equals("")){
             adminService.updateAdminInfo(id, username, password);
         }

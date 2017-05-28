@@ -44,7 +44,6 @@ public class UserController {
     @RequestMapping(value = "/getAllUser")
     public String getAllUser(int stadium, String userName, String phone, int week, double start_time,
                              double end_time, int start, Map<String, Object> map){
-//        System.out.println(stadium + "  " + userName + "  " + phone + "  " + week + "  " + start_time + "  " + end_time);
         map.put("stadium", stadium);
         map.put("userName", (userName == null || userName.equals("")) ? "" : userName);
         map.put("phone", (phone == null || phone.equals("")) ? "" : phone);
@@ -69,9 +68,6 @@ public class UserController {
         map.put("list", list);
         map.put("page_count", count);
         map.put("cnt", list == null ? 0 : list.size());
-//        for(User o : list){
-//            System.out.println(o);
-//        }
         return "checkuser";
     }
 
@@ -113,7 +109,6 @@ public class UserController {
      */
     @RequestMapping(value = "/getUserById")
     public String getUserById(int id, int type, Map<String, Object> map){
-//        System.out.println(id + "  " + type);
         if(type == 1){
             map.put("user", basketballService.getUserById(id));
             System.out.println(basketballService.getUserById(id));
@@ -132,7 +127,6 @@ public class UserController {
      */
     @RequestMapping(value = "/deleteUserById")
     public String deleteUserById(int id, int type){
-//        System.out.println(id + "  " + type);
         if(type == 1){
             System.out.println("delete basketball");
             basketballService.deleteUserById(id);
@@ -165,9 +159,6 @@ public class UserController {
                              int week, double start_time, double end_time, String address,
                              String money, @RequestParam(required = false) String stadium,
                              @RequestParam(required = false) String badminton, String remark){
-        System.out.println(id + "  " + item + "  " + userName + "  " + phone + "  " + emergencycall + "  "
-                + week + "  " + start_time + "  " + end_time + "  " + address + "  " + money + "  " + stadium + "  " + badminton
-                + "  " + remark);
         if(item == 0){
             basketballService.updateUser(id, userName, phone, emergencycall, week, start_time, end_time, address, money, stadium,remark);
         }else{
