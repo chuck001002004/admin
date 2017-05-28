@@ -16,4 +16,16 @@
                 (#{adminid}, now(), #{login_ip})
         </insert>
 
+        <select id="checkBeforeUpdate" resultType="int">
+                SELECT COUNT(*)
+                FROM tb_admin
+                WHERE id = #{id} and password = #{password}
+        </select>
+
+        <update id="updateAdminInfo">
+                UPDATE tb_admin
+                SET realname = #{name}, password = #{password}
+                WHERE id = #{id}
+        </update>
+
 </mapper>

@@ -33,4 +33,24 @@ public class AdminService {
         adminDao.addLog(adminid, login_ip);
     }
 
+    /**
+     * 更改密码前确认身份
+     * @param id 管理员id
+     * @param password 原有密码
+     * @return
+     */
+    public int checkBeforeUpdate(String id, String password){
+        return adminDao.checkBeforeUpdate(id, password);
+    }
+
+    /**
+     * 更新管理员信息
+     * @param id 管理员id
+     * @param username 管理员姓名
+     * @param password 新密码
+     */
+    public void updateAdminInfo(String id, String username, String password){
+        adminDao.updateAdminInfo(id, username, password);
+    }
+
 }

@@ -25,4 +25,21 @@ public interface AdminDao {
      */
     void addLog(@Param(value = "adminid") int adminid, @Param(value = "login_ip") String login_ip);
 
+    /**
+     * 更改密码前确认身份
+     * @param id 管理员id
+     * @param password 原有密码
+     * @return
+     */
+    int checkBeforeUpdate(@Param(value = "id") String id, @Param(value = "password") String password);
+
+    /**
+     * 更新管理员信息
+     * @param id 管理员id
+     * @param username 管理员姓名
+     * @param password 新密码
+     */
+    void updateAdminInfo(@Param(value = "id") String id, @Param(value = "name") String username,
+                         @Param(value = "password") String password);
+
 }

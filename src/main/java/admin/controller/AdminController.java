@@ -65,29 +65,17 @@ public class AdminController {
             Cookie[] cookies = request.getCookies();
             Cookie uN = null;
             Cookie pw = null;
-            if(cookies == null){
-                uN = new Cookie("userName", userName);
-                pw = new Cookie("password", password);
-            }else{
-                for(Cookie cookie : cookies){
-                    if(cookie.getName().equals("userName")){
-                        uN = cookie;
-                        System.out.println(uN.getValue());
-                        cookie.setValue(userName);
-                    }
-                    if(cookie.getName().equals("password")){
-                        pw = cookie;
-                        System.out.println(pw.getValue());
-                        cookie.setValue(password);
-                    }
-                }
-            }
+            uN = new Cookie("userName", userName);
+            pw = new Cookie("password", password);
             uN.setMaxAge(60 * 60 * 24 * 7);
             pw.setMaxAge(60 * 60 * 24 * 7);
             uN.setPath("/");
             pw.setPath("/");
             response.addCookie(uN);
             response.addCookie(pw);
+            for(Cookie c : cookies){
+                System.out.println(c.getName() + " : " + c.getValue());
+            }
         }
         map.put("admin", admin);
         return "index";
@@ -127,6 +115,42 @@ public class AdminController {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
         return "login";
+    }
+
+    /**
+     * 更改密码前确认身份
+     * @param id 管理员id
+     * @param password 原有密码
+     * @return
+     */
+    @RequestMapping(value = "/checkBeforeUpdate", produces = {"plain/html;charset=UTF-8"})
+    @ResponseBody
+    public String checkBeforeUpdate(String id, String password){
+//        System.out.println(adminService.checkBeforeUpdate(id, password));
+        if(adminService.checkBeforeUpdate(id, password) > 0){
+            return "1";
+        }
+        return "0";
+    }
+
+    /**
+     * 更新管理员信息
+     * @param id 管理员id
+     * @param username 管理员姓名
+     * @param password 新密码
+     * @return
+     */
+    @RequestMapping(value = "/updateAdminInfo")
+    public String updateAdminInfo(String id, String username, String password, Map<String, Object> map){
+//        System.out.println(id + "  " + username + "  " + password);
+        if(password != null && !password.equals("")){
+            adminService.updateAdminInfo(id, username, password);
+        }
+        Admin admin = new Admin();
+        admin.setId(Integer.parseInt(id));
+        admin.setName(username);
+        map.put("admin", admin);
+        return "index";
     }
 
 }
